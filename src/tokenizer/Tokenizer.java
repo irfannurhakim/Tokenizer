@@ -6,12 +6,8 @@ package tokenizer;
 
 import com.tokenizer.util.FileRecursiveReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  *
@@ -24,23 +20,13 @@ public class Tokenizer {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        //int nrOfProcessors = Runtime.getRuntime().availableProcessors();
+        ExecutorService es = Executors.newFixedThreadPool(50);
 
-        FileRecursiveReader frs = new FileRecursiveReader("/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir/symes-k/");
 
-        for (int i = 0; i < frs.getList().size(); i++) {
-            
-            System.out.println(frs.getList().get(i).getName());
-           /* StringBuilder text = new StringBuilder();
-
-            try {
-                Scanner scanner = new Scanner(frs.getList().get(i));
-                while (scanner.hasNextLine()) {
-                    text.append(scanner.nextLine());
-                }
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(Tokenizer.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            System.out.println(text);*/
-        }
+        File file = new File("/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir");
+        FileRecursiveReader frs = new FileRecursiveReader(es);
+        frs.getListDirectory(file);
+        System.exit(0);
     }
 }
