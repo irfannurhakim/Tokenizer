@@ -66,7 +66,7 @@ public class FileRecursiveReader {
     }
 
     public void callback(StringBuilder result) {
-        //System.out.println("hasil :" + result);
+        System.out.println("hasil :" + result);
         //System.out.println(new java.util.Date().getTime());
     }
 

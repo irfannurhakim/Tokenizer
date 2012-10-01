@@ -24,7 +24,7 @@ public class Tokenizer {
         ExecutorService es = Executors.newFixedThreadPool(50);
 
 
-        File file = new File("/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir");
+        File file = new File("/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir/allen-p");
         FileRecursiveReader frs = new FileRecursiveReader(es);
         frs.getListDirectory(file);
         System.exit(0);
