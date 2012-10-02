@@ -5,10 +5,10 @@
 package com.tokenizer.util;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
-
 
 /**
  *
@@ -33,7 +33,9 @@ public class FileRecursiveReader {
     }
 
     public void getListDirectory(File file) {
-       
+        
+        
+        
         if (this.isDirectory(file) && !file.getName().equalsIgnoreCase("all_documents")) {
             for (int i = 0; i < file.listFiles().length; i++) {
                 this.getListDirectory(file.listFiles()[i]);
