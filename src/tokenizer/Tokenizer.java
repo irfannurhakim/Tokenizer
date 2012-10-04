@@ -4,14 +4,12 @@
  */
 package tokenizer;
 
-import com.tokenizer.util.FileRecursiveReader;
 import com.tokenizer.util.FileWalker;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.*;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.nio.file.FileVisitor;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  *
@@ -35,9 +33,9 @@ public class Tokenizer {
          * frs.getListDirectory(file); System.exit(0);
          */
 
-        String root = "/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir/";
+        String root = "/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir/allen-p";
         FileVisitor<Path> fileVisitor = new FileWalker();
         Files.walkFileTree(Paths.get(root), fileVisitor);
+        //System.exit(0);
     }
-
 }

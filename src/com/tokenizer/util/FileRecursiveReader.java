@@ -47,9 +47,9 @@ public class FileRecursiveReader {
 
             //System.out.println(file.getAbsoluteFile());
             if (!file.getName().equalsIgnoreCase("all_documents")) {
-                FileReader task = new FileReader(file);
-                task.setCaller(this);
-                es.submit(task);
+                //FileReader task = new FileReader(file);
+                //task.setCaller(this);
+                //es.submit(task);
             }
             //System.out.println(i++);
             /*
