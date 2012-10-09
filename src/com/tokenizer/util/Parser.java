@@ -19,4 +19,24 @@ public class Parser {
     public static int findIdx(String collection, String keyword) {
         return collection.indexOf(keyword);
     }
+
+    public static String removeHeadAndTail(String s) {
+        return (s.matches("\\W*\\w*\\W*")) ? s.replaceAll("\\W+", "") : s;
+    }
+
+    public static String removeApostrope(String s) {
+        return s.replaceAll("'s", "").replaceAll("'", "");
+    }
+
+    public static String removeHypenate(String s) {
+        if (s.matches("([a-zA-Z]*-)*[a-zA-Z]*")) {
+            s = s.replaceAll("-", "");
+        }
+        return s;
+    }
+    
+    public static String removeSpecialChar(String s){
+        return s.replaceAll("[,!;:?%=_&#/\\\\^\\+\\*\\{\\}\\$\\|\\-<>\\[\\]\\(\\)\"]+", "");
+    }
+            
 }

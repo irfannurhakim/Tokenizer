@@ -5,19 +5,13 @@
 package com.tokenizer.util;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.regex.Pattern;
 
 /**
  *
@@ -25,7 +19,8 @@ import java.util.regex.Pattern;
  */
 public class FileWalker extends SimpleFileVisitor<Path> {
 
-    private ExecutorService es = Executors.newFixedThreadPool(50);
+    ExecutorService es = Executors.newFixedThreadPool(10);
+    ArrayList<String> collection = new ArrayList<String>();
     private Map<String, String> myMap = new HashMap<String, String>();
     int i = 0;
 
@@ -33,33 +28,17 @@ public class FileWalker extends SimpleFileVisitor<Path> {
     public FileVisitResult visitFile(
             Path aFile, BasicFileAttributes aAttrs) throws IOException {
 
-        //System.out.println("Processing file: " + aFile);
-        i++;
-        if (i % 1000 == 0) {
-            System.out.println(i);
-        }
-
         if (!aFile.getFileName().toString().equalsIgnoreCase(".DS_Store")) {
+            i++;
+            //if (i % 1000 == 0) {
+            //  System.out.println(i);
+            //}
 
-            //FileReader task = new FileReader(aFile);
-            //task.setCaller(this);
-            //es.submit(task);
-            //System.out.println(String.valueOf(Files.readAllLines(aFile, StandardCharsets.UTF_8)).toLowerCase());
-            String[] xx = Parser.slice(String.valueOf(Files.readAllLines(aFile, StandardCharsets.ISO_8859_1)).toLowerCase());
-            //int toIdx = Parser.findIdx(xx,"to");
-            //Boolean isTo = true;
-            
-            
-            for (int j = 0; j < xx.length; j++) {
-                if(!xx[j].equalsIgnoreCase("")){
-                
-                }
-                //myMap.put(aFile.toString(), xx[j]);
-                //System.out.println(xx[j]);
-                //System.out.println(xx[j].indexOf("to"));
-            }
+            FileReader task = new FileReader(aFile, i);
+            task.setCaller(this);
+            es.submit(task);
+
         }
-        //es.shutdown();
         return FileVisitResult.CONTINUE;
     }
 
@@ -69,13 +48,24 @@ public class FileWalker extends SimpleFileVisitor<Path> {
         if (aDir.endsWith("all_documents/")) {
             return FileVisitResult.SKIP_SUBTREE;
         }
-        //System.out.println("Processing directory:" + aDir);
         return FileVisitResult.CONTINUE;
     }
 
-    public void callback(List<String> result) {
-        //System.out.println("hasil :" + String.valueOf(result));
-        //System.out.println(new java.util.Date().getTime());
+    public void callback(String result, int count) {
+        if (count % 1000 == 0) {
+            System.out.println(count);
+        }
+
+        String[] words = result.split("\\s");
+        
+        collection.addAll(Arrays.asList(words));
+
+        //System.out.println(result);
+        if (count >= i) {
+            System.out.println(collection.size());
+            es.shutdown();
+            System.exit(0);
+        }
     }
 
     public Map<String, String> getMyMap() {

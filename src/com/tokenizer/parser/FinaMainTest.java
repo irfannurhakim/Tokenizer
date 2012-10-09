@@ -21,7 +21,7 @@ public class FinaMainTest {
         String a="UBS have,organized an important.meeting  will be held tomorrow for all employees who "
                 + ": 1) have accepted offers or 2) intend to accept offers ( to the best of their "
                 + "knowledge) but who have issues that are being resolved All employees in these "
-                + "not get this message in time Tammie Schopp mother-in-law  100-20-1233 10am-1pm ";
+                + "not get this message in time Tammie's Schopp mother-in-law  100-20-1233 10am-1pm ";
         
         a= a.toLowerCase();
         String [] ax = a.split(" ");
@@ -39,6 +39,7 @@ public class FinaMainTest {
                 s= removeHeadAndTail(s);
                 s= removeApostrope(s);
                 s= removeHypenate(s);
+                s= removeSpecialChar(s);
                 as.add(s);
             }
         
@@ -79,6 +80,10 @@ public class FinaMainTest {
         return s;
     }
     
+    
+    public static String removeSpecialChar(String s){
+        return s.replaceAll("[,!;:?%=_&#/\\\\^\\+\\*\\{\\}\\$\\|\\<>\\[\\]\\(\\)\"]+", "");
+    }
     
     
 }
