@@ -38,5 +38,9 @@ public class Parser {
     public static String removeSpecialChar(String s){
         return s.replaceAll("[,!;:?%=_&#/\\\\^\\+\\*\\{\\}\\$\\|\\-<>\\[\\]\\(\\)\"]+", "");
     }
+    
+    public static String removePunc(String s){
+        return s.replaceAll("\\p{Punct}", " ");
+                }
             
 }
