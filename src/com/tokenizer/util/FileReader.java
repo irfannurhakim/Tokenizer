@@ -6,15 +6,10 @@ package com.tokenizer.util;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.MappedByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Scanner;
 import java.util.concurrent.Callable;
 
 /**
@@ -30,6 +25,10 @@ public class FileReader implements Callable {
     private Path path;
     private int count;
 
+    public FileReader(){
+        
+    }
+    
     public FileReader(File file) {
         this.file = file;
     }
@@ -80,7 +79,38 @@ public class FileReader implements Callable {
         line = Parser.removeApostrope(line);
         line = Parser.removeHeadAndTail(line);
         line = Parser.removeHypenate(line);
-        line = Parser.removeSpecialChar(line);
+        //line = Parser.removeSpecialChar(line);
+
+        /*
+         * raw -> array 0 head, array 1 tail
+         */
+        String[] raw = line.split("to");
+        /*
+         * split head
+         */
+        String[] head = raw[0].split("from");
+        /*
+         * split tail
+         */
+        String[] tail = raw[1].split("subject");
+        /*
+         * split date
+         */
+
+        //String date = head[0].split("date")[1];
+        /*
+         * split head to get 'from' in array 1
+         */
+        //String[] from = head[1].split("\\s");
+        /*
+         * split tail, and get array 0 to perform get 'to'
+         */
+        //String[] to = tail[0].split("\\s");
+        /*
+         * split to get raw body
+         */
+        //String[] body = tail[1].split("\\s");
+
 
 //Using FileChannel
 
@@ -102,7 +132,7 @@ public class FileReader implements Callable {
 //        } finally {
 //            stream.close();
 //        }
-        
+
 //        String line = readFile(this.path.toString());
 //        line = line.toLowerCase();
 //        line = Parser.removeApostrope(line);
@@ -111,8 +141,8 @@ public class FileReader implements Callable {
 //        line = Parser.removeSpecialChar(line);
         //line = Parser.removePunc(line);
 
-
-        fileWalker.callback(line, count);
+        fileWalker.callback(head[0].split("date")[1], head[1],new String[]{"test"} , new String[]{"test"},count);
+        //fileWalker.callback(head[0].split("date")[1], head[1].split("\\s"), tail[0].split("\\s"), tail[1].split("\\s"), count);
         return null;
     }
 
@@ -128,5 +158,10 @@ public class FileReader implements Callable {
         }
         //reader.close();
         return stringBuilder.toString();
+    }
+
+    public void setProperty(Path aFile, int i) {
+        this.path = aFile;
+        this.count = i;
     }
 }
