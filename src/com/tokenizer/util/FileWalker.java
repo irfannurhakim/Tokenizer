@@ -9,8 +9,6 @@ import java.nio.file.FileVisitResult;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
@@ -23,9 +21,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class FileWalker extends SimpleFileVisitor<Path> {
 
-    ExecutorService es = Executors.newFixedThreadPool(10);
-    ArrayList<String> collection = new ArrayList<String>();
+    private ExecutorService es = Executors.newFixedThreadPool(10);
     private Map<String, Integer> myMap = new HashMap<String, Integer>();
+    private Runtime rt = Runtime.getRuntime();
+
     int i = 0;
 
     @Override
@@ -55,25 +54,16 @@ public class FileWalker extends SimpleFileVisitor<Path> {
         return FileVisitResult.CONTINUE;
     }
 
-    public void callback(String result, int count) throws InterruptedException {
-        //if (count % 1000 == 0) {
-        System.out.println(i + " " + count);
+    public void callback(String date, String from, String[] to, String[] body,int jobDone) throws InterruptedException {
+        //if (jobDone % 1000 == 0) {
+            System.out.println("job done " + jobDone + " " + i);
+            //rt.gc();
+            //rt.gc();
         //}
 
-        //String[] words = result.split("\\s");
-
-        for (String string : result.split("\\s")) {
-            if (myMap.get(string) == 0) {
-                myMap.put(string, myMap.get(string) + 1);
-            } else {
-                myMap.put(string, 1);
-            }
-        }
-
-        //System.out.println(result);
-
-        if (count >= 100) {
+        if (jobDone >= i) {
             //System.out.println(collection.size());
+            //System.out.println(myMap);
             es.awaitTermination((long) 1, TimeUnit.SECONDS);
             System.exit(0);
         }
