@@ -17,7 +17,7 @@ public class toTokenizer {
     public static HashMap getListTo(String to)
     {
         HashMap termList = new HashMap();
-        String[] terms  = to.split(",|(\\s)+|<|> ");
+        String[] terms  = to.toLowerCase().split(",|(\\s)+|<|> ");
         for (int i = 0; i < terms.length; i++) {
             String key = terms[i];
             if(!key.matches(""))

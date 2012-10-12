@@ -15,7 +15,7 @@ public class dateTokenizer {
     public static HashMap getListDate(String date)
     {
         HashMap termList = new HashMap();
-        String[] terms  = date.split(", | ");
+        String[] terms  = date.toLowerCase().split(", | ");
         termList.put(terms[0], 1);
         termList.put(terms[1]+terms[2]+terms[3], 1);
         termList.put(terms[4], 1);
