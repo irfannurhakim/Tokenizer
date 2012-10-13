@@ -228,7 +228,7 @@ public class FileReader implements Callable {
 //        line = Parser.removeSpecialChar(line);
         //line = Parser.removePunc(line);
         //fileWalker.callback(email.getDate(), email.getFrom(),new String[]{"test"} , new String[]{"test"},count);
-        fileWalker.callback("", "",new String[]{"test"} , new String[]{"test"},count);
+        fileWalker.callback(path.toString(), "", raw, new String[]{"test"}, count);
         //fileWalker.callback(head[0].split("date")[1], head[1].split("\\s"), tail[0].split("\\s"), tail[1].split("\\s"), count);
         return null;
     }
