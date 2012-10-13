@@ -11,11 +11,10 @@ import java.util.HashMap;
  * @author user
  */
 public class FromTokenizer {
-    
-     public static HashMap<String, Integer> getListFrom(String from)
-    {
+
+    public static HashMap<String, Integer> getListFrom(String from) {
         HashMap<String, Integer> termList = new HashMap<String, Integer>();
-       
+
         termList.put(from, 1);
         //System.out.println(termList);
         return termList;

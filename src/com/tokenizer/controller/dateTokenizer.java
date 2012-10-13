@@ -11,18 +11,16 @@ import java.util.HashMap;
  * @author user
  */
 public class dateTokenizer {
-    
-    public static HashMap<String, Integer> getListDate(String date)
-    {
+
+    public static HashMap<String, Integer> getListDate(String date) {
         HashMap<String, Integer> termList = new HashMap<String, Integer>();
-        String[] terms  = date.split(", | ");
+        String[] terms = date.split(", | ");
         termList.put(terms[0], 1);
-        termList.put(terms[1]+terms[2]+terms[3], 1);
+        termList.put(terms[1] + terms[2] + terms[3], 1);
         termList.put(terms[4], 1);
         termList.put(terms[5], 1);
         termList.put(terms[6], 1);
         //System.out.println(termList);
         return termList;
     }
-
 }
