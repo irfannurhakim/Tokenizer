@@ -4,12 +4,16 @@
  */
 package com.tokenizer.parser;
 
+import com.tokenizer.model.BigConcurentHashMap;
+import com.tokenizer.model.TermCounter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.StringTokenizer;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  *
@@ -19,7 +23,7 @@ public class FinaMainTest {
     
     public static void main(String[] args) {
         
-        String a="UBS? have,organized an important.meeting  }will be held tomorrow for all employees who "
+       /* String a="UBS? have,organized an important.meeting  }will be held tomorrow for all employees who "
                 + ": 1) have accepted offers or 2) intend to accept offers ( to the best of their "
                 + "knowledge) but who?have issues that are being!resolved All employees in these 12:33:34 "
                 + "not get this message in time Tammie's Schopp mother-in-law  100-20-1233 10am-1pm rono.budi susi,shinta ";
@@ -60,7 +64,7 @@ public class FinaMainTest {
         
         }
         
-        System.out.println(System.getProperty("line.separator"));
+        System.out.println(System.getProperty("line.separator"));*/
         
         //System.out.println(as);
         
@@ -75,7 +79,15 @@ public class FinaMainTest {
         //System.out.println(coba[0]);
         System.out.println(coba[1]);*/
         
+       ConcurrentHashMap<String, TermCounter> asd = new ConcurrentHashMap<String, TermCounter>();
+       asd.put("a", new TermCounter(40, 2, 0));
+       asd.put("b", new TermCounter(20, 2, 0));
+       asd.put("c", new TermCounter(10, 3, 0));
+       asd.put("d", new TermCounter(5, 1, 0));
+       asd.put("e", new TermCounter(30, 2, 0));
        
+      LinkedHashMap asdf= BigConcurentHashMap.calculateTermWight(asd, 7);
+        System.out.println(asdf);
 	    
     }
     public static boolean isNeedSplit(String partString)

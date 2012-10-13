@@ -5,40 +5,49 @@
  */
 package com.tokenizer.util;
 
+import com.tokenizer.model.BigConcurentHashMap;
+import com.tokenizer.model.TermCounter;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import tokenizer.Tokenizer;
 
 /**
  *
  * @author irfannurhakim
  */
 public class FileWalker extends SimpleFileVisitor<Path> {
+
     int nrOfProcessors = Runtime.getRuntime().availableProcessors();
     private ExecutorService es = Executors.newFixedThreadPool(nrOfProcessors);
     private Map<String, Integer> fromList = new HashMap<String, Integer>();
     private Runtime rt = Runtime.getRuntime();
     private int i = 0, j = 1;
     long startTime;
-    
-    public FileWalker(){
+
+    public FileWalker() {
         startTime = System.nanoTime();
     }
-    
+
     @Override
     public FileVisitResult visitFile(
             Path aFile, BasicFileAttributes aAttrs) throws IOException {
-        
+
         if (!aFile.getFileName().toString().equalsIgnoreCase(".DS_Store")) {
-            
+
             if (i % 1000 == 0) {
                 System.out.println("job send " + i);
             }
@@ -49,7 +58,7 @@ public class FileWalker extends SimpleFileVisitor<Path> {
         }
         return FileVisitResult.CONTINUE;
     }
-    
+
     @Override
     public FileVisitResult preVisitDirectory(
             Path aDir, BasicFileAttributes aAttrs) throws IOException {
@@ -58,7 +67,7 @@ public class FileWalker extends SimpleFileVisitor<Path> {
         }
         return FileVisitResult.CONTINUE;
     }
-    
+
     public void callback(String date, String from, String[] to, String[] body, int jobDone) throws InterruptedException {
         //j++;
         /*
@@ -67,30 +76,65 @@ public class FileWalker extends SimpleFileVisitor<Path> {
          * freq.intValue(); freq = new Integer(value + 1); } fromList.put(from,
          * freq); }
          */
-        if(to.length ==1)
+        if (to.length == 1) {
             System.out.println(date);
-        
+        }
+
         if (jobDone % 1000 == 0) {
             System.out.println("job done " + jobDone + " from: " + i + " in : " + ((System.nanoTime() - startTime) / 1000000000.0) + "sec");
             rt.gc();
             rt.gc();
         }
-        
+
         if (jobDone >= i) {
             es.shutdown();
             es.awaitTermination((long) 1000, TimeUnit.MILLISECONDS);
-            
-            
+
+
             //ValueComparator c = new ValueComparator(fromList);
             //TreeMap<String, Integer> sorted_map = new TreeMap<String, Integer>(c);
             //sorted_map.putAll(fromList);
             //System.out.println(sorted_map);
+            Tokenizer.N_messagge=i;
+            try {
+                LinkedHashMap dateList = BigConcurentHashMap.calculateTermWight(BigConcurentHashMap.dateConcurentMap, Tokenizer.N_messagge);
+                BigConcurentHashMap.printStatistic(dateList, "date", Tokenizer.N_messagge);
+                LinkedHashMap fromList = BigConcurentHashMap.calculateTermWight(BigConcurentHashMap.fromConcurentMap, Tokenizer.N_messagge);
+                BigConcurentHashMap.printStatistic(fromList, "from", Tokenizer.N_messagge);
+                LinkedHashMap toList = BigConcurentHashMap.calculateTermWight(BigConcurentHashMap.toConcurentMap, Tokenizer.N_messagge);
+                BigConcurentHashMap.printStatistic(toList, "to", Tokenizer.N_messagge);
+                LinkedHashMap subjectList = BigConcurentHashMap.calculateTermWight(BigConcurentHashMap.subjectConcurentMap, Tokenizer.N_messagge);
+                BigConcurentHashMap.printStatistic(subjectList, "subject", Tokenizer.N_messagge);
+                LinkedHashMap bodyList = BigConcurentHashMap.calculateTermWight(BigConcurentHashMap.bodyConcurentMap, Tokenizer.N_messagge);
+                BigConcurentHashMap.printStatistic(bodyList, "body", Tokenizer.N_messagge);
+                LinkedHashMap allList = BigConcurentHashMap.calculateTermWight(BigConcurentHashMap.allConcurentMap, Tokenizer.N_messagge);
+                BigConcurentHashMap.printStatistic(allList, "all", Tokenizer.N_messagge);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+
+
             System.exit(0);
         }
-        
+
     }
-    
+
     public Map<String, Integer> getFromList() {
         return fromList;
     }
+
+    public void writeToFile(String fileName, String text) {
+        try {
+            // Create file 
+            FileWriter fstream = new FileWriter(fileName);
+            BufferedWriter out = new BufferedWriter(fstream);
+            out.write(text);
+            //Close the output stream
+            out.close();
+        } catch (Exception e) {//Catch exception if any
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+
 }

@@ -99,13 +99,9 @@ public class FileReader implements Callable {
         
         String [] date = raw[1].split("from: ",2);
         HashMap <String,Integer> dateMap = dateTokenizer.getListDate(date[0]);
-        if(dateMap.size()!=0)
-        {
-            synchronized(Tokenizer.N_messagge)
-            {
-                Tokenizer.N_messagge[0]++;
-            }
-        }
+       
+            
+        
         synchronized(BigConcurentHashMap.dateConcurentMap )
         {
         BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.dateConcurentMap, dateMap);
@@ -115,13 +111,7 @@ public class FileReader implements Callable {
         
         String [] from = date[1].split("to: ", 2);
         HashMap <String,Integer> fromMap = FromTokenizer.getListFrom(from[0].replaceAll(", ", ""));
-        if(fromMap.size()!=0)
-        {
-            synchronized(Tokenizer.N_messagge)
-            {
-                Tokenizer.N_messagge[1]++;
-            }
-        }
+        
         synchronized(BigConcurentHashMap.fromConcurentMap )
         {
         BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.fromConcurentMap, fromMap);
@@ -130,14 +120,7 @@ public class FileReader implements Callable {
         
         String [] to = from[1].split("subject: ",2);
          HashMap <String,Integer> toMap = toTokenizer.getListTo(to[0]);
-         if(toMap.size()!=0)
-        {
-            synchronized(Tokenizer.N_messagge)
-            {
-                Tokenizer.N_messagge[2]++;
-                System.out.println(Tokenizer.N_messagge[2]);
-            }
-        }
+         
         synchronized(BigConcurentHashMap.toConcurentMap )
         {
         BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.toConcurentMap, toMap);
@@ -145,13 +128,7 @@ public class FileReader implements Callable {
         
         String [] subject = to[1].split("mime-version: ", 2);
         HashMap <String,Integer> subjectMap = subject_bodyTokenizer.getListTerm(subject[0]);
-        if(subjectMap.size()!=0)
-        {
-            synchronized(Tokenizer.N_messagge)
-            {
-                Tokenizer.N_messagge[3]++;
-            }
-        }
+        
         synchronized(BigConcurentHashMap.subjectConcurentMap )
         {
         BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.subjectConcurentMap, subjectMap);
@@ -163,13 +140,7 @@ public class FileReader implements Callable {
         HashMap <String,Integer> bodyMap = new HashMap<String, Integer>();
         String [] body = subject[1].split("(\\.pst)|(\\.nsf)", 2);
         bodyMap= subject_bodyTokenizer.getListTerm(body[1]);
-       if(bodyMap.size()!=0)
-        {
-            synchronized(Tokenizer.N_messagge)
-            {
-                Tokenizer.N_messagge[4]++;
-            }
-        }
+     
         synchronized(BigConcurentHashMap.bodyConcurentMap )
         {
         BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.bodyConcurentMap, bodyMap);
@@ -182,13 +153,7 @@ public class FileReader implements Callable {
         //System.out.println(bodyMap);
 
         HashMap <String,Integer> allFieldMap = AllFieldTokenizer.allFieldTermList(dateMap, toMap, fromMap, subjectMap, bodyMap);
-        if(allFieldMap.size()!=0)
-        {
-            synchronized(Tokenizer.N_messagge)
-            {
-                Tokenizer.N_messagge[5]++;
-            }
-        }
+       
         synchronized(BigConcurentHashMap.allConcurentMap )
         {
         BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.allConcurentMap, allFieldMap);

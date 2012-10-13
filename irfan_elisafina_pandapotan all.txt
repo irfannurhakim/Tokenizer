@@ -1,0 +1,43 @@
+irfan_elisafina_pandapotan all N 61
+irfan_elisafina_pandapotan all TO 3615
+irfan_elisafina_pandapotan all UT 3388
+irfan_elisafina_pandapotan all 1 image 225 9 7.0585424514482895
+irfan_elisafina_pandapotan all 2 09 114 11 3.201304252733496
+irfan_elisafina_pandapotan all 3 buy 80 7 2.839296675564587
+irfan_elisafina_pandapotan all 4 zdnet 40 2 2.241132251549748
+irfan_elisafina_pandapotan all 5 a 212 33 2.13517469137456
+irfan_elisafina_pandapotan all 6 downgraded 33 2 1.8489341075285424
+irfan_elisafina_pandapotan all 7 0 48 7 1.7035780053387524
+irfan_elisafina_pandapotan all 8 2001 105 24 1.6056738287157932
+irfan_elisafina_pandapotan all 9 accenture 39 5 1.599278723243102
+irfan_elisafina_pandapotan all 10 from 118 29 1.4383968530171605
+irfan_elisafina_pandapotan all 11 http 60 15 1.3798265538404273
+irfan_elisafina_pandapotan all 12 on 101 27 1.3494874887715933
+irfan_elisafina_pandapotan all 13 i 121 31 1.3426768167584913
+irfan_elisafina_pandapotan all 14 cgi 26 3 1.283914769887463
+irfan_elisafina_pandapotan all 15 strong 25 3 1.2345334325840989
+irfan_elisafina_pandapotan all 16 slink 22 2 1.2326227383523616
+irfan_elisafina_pandapotan all 17 and 278 47 1.188227884668594
+irfan_elisafina_pandapotan all 18 be 99 30 1.151770028993515
+irfan_elisafina_pandapotan all 19 that 72 23 1.1512677815340921
+irfan_elisafina_pandapotan all 20 shares 23 3 1.1357707579773708
+irfan_elisafina_pandapotan all 21 coverage 20 2 1.120566125774874
+irfan_elisafina_pandapotan all 22 the 533 54 1.0650372587806
+irfan_elisafina_pandapotan all 23 initiated 19 2 1.0645378194861304
+irfan_elisafina_pandapotan all 24 of 246 47 1.051453451900986
+irfan_elisafina_pandapotan all 25 1 60 21 1.04887025552448
+irfan_elisafina_pandapotan all 26 we 78 27 1.042178456675092
+irfan_elisafina_pandapotan all 27 sheri 23 4 1.0273004683644045
+irfan_elisafina_pandapotan all 28 with 84 29 1.023943522486792
+irfan_elisafina_pandapotan all 29 our 53 19 1.0134598181207237
+irfan_elisafina_pandapotan all 30 enron 94 32 0.9941470224445403
+irfan_elisafina_pandapotan all 31 as 66 25 0.9651126326907753
+irfan_elisafina_pandapotan all 32 by 72 27 0.9620108830847002
+irfan_elisafina_pandapotan all 33 are 72 27 0.9620108830847002
+irfan_elisafina_pandapotan all 34 sportsline 14 1 0.9434792475151862
+irfan_elisafina_pandapotan all 35 2000 21 4 0.9379699928544563
+irfan_elisafina_pandapotan all 36 in 134 40 0.927004113900922
+irfan_elisafina_pandapotan all 37 e 33 11 0.926693336317591
+irfan_elisafina_pandapotan all 38 more 42 16 0.9214422288722666
+irfan_elisafina_pandapotan all 39 or 94 34 0.9007254740716736
+irfan_elisafina_pandapotan all 40 upgraded 16 2 0.8964529006198994

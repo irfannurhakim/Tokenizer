@@ -1,0 +1,43 @@
+irfan_elisafina_pandapotan to N 61
+irfan_elisafina_pandapotan to TO 164
+irfan_elisafina_pandapotan to UT 168
+irfan_elisafina_pandapotan to 1 email 9 1 0.6065223734026197
+irfan_elisafina_pandapotan to 2 pallen@enron.com 24 24 0.36701116084932417
+irfan_elisafina_pandapotan to 3 k..allen@enron.com 28 28 0.35742199855650825
+irfan_elisafina_pandapotan to 4 mike.grigsby@enron.com 7 7 0.2484384591119014
+irfan_elisafina_pandapotan to 5 stephen.thome@enron.com 4 2 0.22411322515497484
+irfan_elisafina_pandapotan to 6 bill.williams@enron.com 4 2 0.22411322515497484
+irfan_elisafina_pandapotan to 7 tim.belden@enron.com 5 5 0.20503573374911563
+irfan_elisafina_pandapotan to 8 john.zufferli@enron.com 4 4 0.17866095101989643
+irfan_elisafina_pandapotan to 9 f..calger@enron.com 4 4 0.17866095101989643
+irfan_elisafina_pandapotan to 10 keith.holst@enron.com 4 4 0.17866095101989643
+irfan_elisafina_pandapotan to 11 matt.motley@enron.com 3 3 0.14814401191009186
+irfan_elisafina_pandapotan to 12 h..foster@enron.com 3 3 0.14814401191009186
+irfan_elisafina_pandapotan to 13 pallen70@hotmail.com 3 3 0.14814401191009186
+irfan_elisafina_pandapotan to 14 stephanie.miller@enron.com 3 3 0.14814401191009186
+irfan_elisafina_pandapotan to 15 tom.alonso@enron.com 3 3 0.14814401191009186
+irfan_elisafina_pandapotan to 16 a..martin@enron.com 3 3 0.14814401191009186
+irfan_elisafina_pandapotan to 17 .ward@enron.com> 3 3 0.14814401191009186
+irfan_elisafina_pandapotan to 18 houston 3 3 0.14814401191009186
+irfan_elisafina_pandapotan to 19 robert.badeer@enron.com 3 3 0.14814401191009186
+irfan_elisafina_pandapotan to 20 barry.tycholiz@enron.com 3 3 0.14814401191009186
+irfan_elisafina_pandapotan to 21 mike.swerzbin@enron.com 3 3 0.14814401191009186
+irfan_elisafina_pandapotan to 22 .prices@enron.com> 2 1 0.1347827496450266
+irfan_elisafina_pandapotan to 23 don.hammond@enron.com 2 2 0.11205661257748742
+irfan_elisafina_pandapotan to 24 ed.clark@enron.com 2 2 0.11205661257748742
+irfan_elisafina_pandapotan to 25 samantha.law@enron.com 2 2 0.11205661257748742
+irfan_elisafina_pandapotan to 26 james.bruce@enron.com 2 2 0.11205661257748742
+irfan_elisafina_pandapotan to 27 kortney.brown@enron.com 2 2 0.11205661257748742
+irfan_elisafina_pandapotan to 28 jake.thomas@enron.com 2 2 0.11205661257748742
+irfan_elisafina_pandapotan to 29 chris.gaskill@enron.com 2 2 0.11205661257748742
+irfan_elisafina_pandapotan to 30 eric.bass@enron.com 2 2 0.11205661257748742
+irfan_elisafina_pandapotan to 31 m..presto@enron.com 2 2 0.11205661257748742
+irfan_elisafina_pandapotan to 32 fred.lagrasta@enron.com 2 2 0.11205661257748742
+irfan_elisafina_pandapotan to 33 david.parquet@enron.com 2 2 0.11205661257748742
+irfan_elisafina_pandapotan to 34 andy.chen@enron.com 2 2 0.11205661257748742
+irfan_elisafina_pandapotan to 35 fredrik.eriksson@enron.com 2 2 0.11205661257748742
+irfan_elisafina_pandapotan to 36 stewart.rosman@enron.com 2 2 0.11205661257748742
+irfan_elisafina_pandapotan to 37 john.malowney@enron.com 2 2 0.11205661257748742
+irfan_elisafina_pandapotan to 38 credit 2 2 0.11205661257748742
+irfan_elisafina_pandapotan to 39 jay.reitmeyer@enron.com 2 2 0.11205661257748742
+irfan_elisafina_pandapotan to 40 fran.chang@enron.com 2 2 0.11205661257748742

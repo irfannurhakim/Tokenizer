@@ -1,0 +1,43 @@
+irfan_elisafina_pandapotan date N 66
+irfan_elisafina_pandapotan date TO 270
+irfan_elisafina_pandapotan date UT 100
+irfan_elisafina_pandapotan date 1 mon 30 30 0.3583897092564865
+irfan_elisafina_pandapotan date 2 tue 18 18 0.3543499047627984
+irfan_elisafina_pandapotan date 3 29oct2001 17 17 0.3493864206892964
+irfan_elisafina_pandapotan date 4 27nov2001 10 10 0.28591964379278484
+irfan_elisafina_pandapotan date 5 (pdt) 9 9 0.27169502245775534
+irfan_elisafina_pandapotan date 6 -0700 9 9 0.27169502245775534
+irfan_elisafina_pandapotan date 7 fri 6 6 0.21799047934530644
+irfan_elisafina_pandapotan date 8 sun 5 5 0.19547097193881252
+irfan_elisafina_pandapotan date 9 thu 5 5 0.19547097193881252
+irfan_elisafina_pandapotan date 10 31dec2001 5 5 0.19547097193881252
+irfan_elisafina_pandapotan date 11 26nov2001 4 4 0.1699006291458506
+irfan_elisafina_pandapotan date 12 25oct2001 4 4 0.1699006291458506
+irfan_elisafina_pandapotan date 13 30dec2001 4 4 0.1699006291458506
+irfan_elisafina_pandapotan date 14 1jan2002 3 3 0.1405019296981053
+irfan_elisafina_pandapotan date 15 (pst) 57 57 0.1266120913475288
+irfan_elisafina_pandapotan date 16 -0800 57 57 0.1266120913475288
+irfan_elisafina_pandapotan date 17 11sep2001 2 2 0.10595477458989334
+irfan_elisafina_pandapotan date 18 10dec2001 2 2 0.10595477458989334
+irfan_elisafina_pandapotan date 19 16nov2001 2 2 0.10595477458989334
+irfan_elisafina_pandapotan date 20 21:16:58 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 21 14:44:51 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 22 17dec2001 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 23 29dec2001 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 24 08:40:38 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 25 16:22:13 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 26 09:03:56 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 27 10:07:13 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 28 23:42:30 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 29 12:04:35 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 30 10:15:25 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 31 17:35:18 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 32 27dec2001 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 33 17:22:24 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 34 13:24:44 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 35 15:22:12 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 36 20nov2001 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 37 16:50:21 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 38 14:58:02 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 39 13:49:57 1 1 0.06347961730343069
+irfan_elisafina_pandapotan date 40 17:06:01 1 1 0.06347961730343069

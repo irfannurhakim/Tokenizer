@@ -1,0 +1,43 @@
+irfan_elisafina_pandapotan subject N 59
+irfan_elisafina_pandapotan subject TO 228
+irfan_elisafina_pandapotan subject UT 224
+irfan_elisafina_pandapotan subject 1 enron 24 16 0.5308265986437715
+irfan_elisafina_pandapotan subject 2 com 26 19 0.4993315268342585
+irfan_elisafina_pandapotan subject 3 cc 14 14 0.341334264407906
+irfan_elisafina_pandapotan subject 4 for 12 12 0.3239249072781802
+irfan_elisafina_pandapotan subject 5 re 9 9 0.286827386425856
+irfan_elisafina_pandapotan subject 6 to 7 6 0.2711939969956551
+irfan_elisafina_pandapotan subject 7 your 7 7 0.2529049332873363
+irfan_elisafina_pandapotan subject 8 approval 6 6 0.23245199742484723
+irfan_elisafina_pandapotan subject 9 allen 6 6 0.23245199742484723
+irfan_elisafina_pandapotan subject 10 2001 6 6 0.23245199742484723
+irfan_elisafina_pandapotan subject 11 meeting 6 6 0.23245199742484723
+irfan_elisafina_pandapotan subject 12 overdue 5 5 0.20916097724335755
+irfan_elisafina_pandapotan subject 13 is 5 5 0.20916097724335755
+irfan_elisafina_pandapotan subject 14 access 5 5 0.20916097724335755
+irfan_elisafina_pandapotan subject 15 matt 5 5 0.20916097724335755
+irfan_elisafina_pandapotan subject 16 smith 5 5 0.20916097724335755
+irfan_elisafina_pandapotan subject 17 k 5 5 0.20916097724335755
+irfan_elisafina_pandapotan subject 18 request 5 5 0.20916097724335755
+irfan_elisafina_pandapotan subject 19 john 4 3 0.20196102747373626
+irfan_elisafina_pandapotan subject 20 phillip 4 4 0.18245715815497146
+irfan_elisafina_pandapotan subject 21 by 4 4 0.18245715815497146
+irfan_elisafina_pandapotan subject 22 a 4 4 0.18245715815497146
+irfan_elisafina_pandapotan subject 23 publications 4 4 0.18245715815497146
+irfan_elisafina_pandapotan subject 24 of 4 4 0.18245715815497146
+irfan_elisafina_pandapotan subject 25 ngi 4 4 0.18245715815497146
+irfan_elisafina_pandapotan subject 26 in 3 3 0.1514707706053022
+irfan_elisafina_pandapotan subject 27 west 3 3 0.1514707706053022
+irfan_elisafina_pandapotan subject 28 lavorato 3 3 0.1514707706053022
+irfan_elisafina_pandapotan subject 29 tim 3 3 0.1514707706053022
+irfan_elisafina_pandapotan subject 30 2002 3 3 0.1514707706053022
+irfan_elisafina_pandapotan subject 31 10 3 3 0.1514707706053022
+irfan_elisafina_pandapotan subject 32 from 3 3 0.1514707706053022
+irfan_elisafina_pandapotan subject 33 and 3 3 0.1514707706053022
+irfan_elisafina_pandapotan subject 34 new 3 3 0.1514707706053022
+irfan_elisafina_pandapotan subject 35 free 3 3 0.1514707706053022
+irfan_elisafina_pandapotan subject 36 fw 3 3 0.1514707706053022
+irfan_elisafina_pandapotan subject 37 simulation 3 3 0.1514707706053022
+irfan_elisafina_pandapotan subject 38 amendment 2 2 0.11472509367273812
+irfan_elisafina_pandapotan subject 39 service 2 2 0.11472509367273812
+irfan_elisafina_pandapotan subject 40 orourke 2 2 0.11472509367273812

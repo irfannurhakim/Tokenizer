@@ -1,0 +1,43 @@
+irfan_elisafina_pandapotan body N 61
+irfan_elisafina_pandapotan body TO 3686
+irfan_elisafina_pandapotan body UT 3071
+irfan_elisafina_pandapotan body 1 image 225 9 7.0585424514482895
+irfan_elisafina_pandapotan body 2 09 114 11 3.201304252733496
+irfan_elisafina_pandapotan body 3 buy 80 7 2.839296675564587
+irfan_elisafina_pandapotan body 4 zdnet 40 2 2.241132251549748
+irfan_elisafina_pandapotan body 5 a 208 32 2.199814687962387
+irfan_elisafina_pandapotan body 6 downgraded 32 2 1.7929058012397987
+irfan_elisafina_pandapotan body 7 0 48 7 1.7035780053387524
+irfan_elisafina_pandapotan body 8 2001 99 23 1.582993199609377
+irfan_elisafina_pandapotan body 9 accenture 37 5 1.5172644297434559
+irfan_elisafina_pandapotan body 10 from 115 28 1.4679832083570874
+irfan_elisafina_pandapotan body 11 on 100 26 1.397995616642343
+irfan_elisafina_pandapotan body 12 http 60 15 1.3798265538404273
+irfan_elisafina_pandapotan body 13 i 120 31 1.3315803141406524
+irfan_elisafina_pandapotan body 14 cgi 26 3 1.283914769887463
+irfan_elisafina_pandapotan body 15 strong 25 3 1.2345334325840989
+irfan_elisafina_pandapotan body 16 slink 22 2 1.2326227383523616
+irfan_elisafina_pandapotan body 17 com 150 37 1.22939988080923
+irfan_elisafina_pandapotan body 18 and 275 47 1.1754052815966307
+irfan_elisafina_pandapotan body 19 be 99 30 1.151770028993515
+irfan_elisafina_pandapotan body 20 that 72 23 1.1512677815340921
+irfan_elisafina_pandapotan body 21 shares 23 3 1.1357707579773708
+irfan_elisafina_pandapotan body 22 coverage 20 2 1.120566125774874
+irfan_elisafina_pandapotan body 23 enron 70 24 1.0704492191438622
+irfan_elisafina_pandapotan body 24 initiated 19 2 1.0645378194861304
+irfan_elisafina_pandapotan body 25 the 532 54 1.0630390650493045
+irfan_elisafina_pandapotan body 26 1 60 21 1.04887025552448
+irfan_elisafina_pandapotan body 27 we 78 27 1.042178456675092
+irfan_elisafina_pandapotan body 28 of 242 47 1.034356647805035
+irfan_elisafina_pandapotan body 29 with 83 29 1.0117537186476637
+irfan_elisafina_pandapotan body 30 by 68 25 0.9943584700450411
+irfan_elisafina_pandapotan body 31 our 52 19 0.9943379347599555
+irfan_elisafina_pandapotan body 32 as 66 25 0.9651126326907753
+irfan_elisafina_pandapotan body 33 are 72 27 0.9620108830847002
+irfan_elisafina_pandapotan body 34 in 131 39 0.9606213207167228
+irfan_elisafina_pandapotan body 35 sportsline 14 1 0.9434792475151862
+irfan_elisafina_pandapotan body 36 sheri 21 4 0.9379699928544563
+irfan_elisafina_pandapotan body 37 e 33 11 0.926693336317591
+irfan_elisafina_pandapotan body 38 or 94 34 0.9007254740716736
+irfan_elisafina_pandapotan body 39 more 41 16 0.8995031281848316
+irfan_elisafina_pandapotan body 40 2000 20 4 0.893304755099482

@@ -53,8 +53,10 @@ public class TermCounter   {
 
     @Override
     public String toString() {
-        return "TermCounter{" + "totalTerm=" + totalTerm + ", totalDocument=" + totalDocument + '}';
+        return "TermCounter{" + "totalTerm=" + totalTerm + ", totalDocument=" + totalDocument + ", tokenWeight=" + tokenWeight + '}';
     }
+
+   
 
  
     static class WeightComparator implements Comparator {
