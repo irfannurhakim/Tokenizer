@@ -20,12 +20,13 @@ public class Parser {
         return collection.indexOf(keyword);
     }
 
-    public static String removeHeadAndTail(String s) {
+    public static String removePunc(String s) {
+        //menghapus tanda baca pada awal atau akhir kata, mis: Budi. atau ,tono
         return (s.matches("\\W*\\w*\\W*")) ? s.replaceAll("\\W+", "") : s;
     }
 
     public static String removeApostrope(String s) {
-        return s.replaceAll("'s", "").replaceAll("'", "").replaceAll("[,!;:?%=_&#/\\\\^\\+\\*\\{\\}\\$\\|\\-<>\\[\\]\\(\\)\"]+", "");
+        return s.replaceAll("'s", "").replaceAll("'", "");
     }
 
     public static String removeHypenate(String s) {
@@ -35,16 +36,26 @@ public class Parser {
         return s;
     }
 
-    public static String removeSpecialChar(String s) {
-        return s.replaceAll("[,!;:?%=_&#/\\\\^\\+\\*\\{\\}\\$\\|\\-<>\\[\\]\\(\\)\"]+", "");
-    }
+//    public static String removeSpecialChar(String s) {
+//        return s.replaceAll("[,!;:?%=_&#/\\\\^\\+\\*\\{\\}\\$\\|\\-<>\\[\\]\\(\\)\"]+", "");
+//    }
 
-    public static String removePunc(String s) {
+    /*public static String removePunc(String s) {
         return s.replaceAll("\\p{Punct}", " ");
-    }
+    }*/
     
     public static String removeHTMLTag(String allString){
         // menghapus semua html tag beserta atribut2nya
         return (allString.replaceAll("<(\"[^\"]*\"|'[^']*'|[^'\">])*>", "")); 
+    }
+    
+    public static boolean isNeedSplit(String partString)
+    {
+        // mengembalikan nilai apakah suatu string perlu dipotong, misalkan tono.budi , tolong!saya dst.
+        return (partString.matches("(\\w*\\W)*\\w*"));
+    }
+    public static String[] splitSpecialChar(String partString)
+    {
+        return (partString.split("\\W"));
     }
 }
