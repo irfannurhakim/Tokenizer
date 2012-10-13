@@ -4,6 +4,8 @@
  */
 package com.tokenizer.util;
 
+import com.tokenizer.controller.toTokenizer;
+import com.tokenizer.model.Email;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -60,38 +62,48 @@ public class FileReader implements Callable {
 
     @Override
     public Object call() throws IOException, InterruptedException {
-        /*
-         * FileInputStream fis = null; try { fis = new
-         * FileInputStream(this.path.toFile()); FileChannel fileChannel =
-         * fis.getChannel(); ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
-         *
-         * int bytes = fileChannel.read(byteBuffer); while(bytes!=-1){
-         * byteBuffer.flip(); while (byteBuffer.hasRemaining()){
-         * System.out.print((char)byteBuffer.get()); } byteBuffer.clear(); bytes
-         * = fileChannel.read(byteBuffer); } if(fis!=null){ fis.close(); } }
-         * catch (FileNotFoundException e) { e.printStackTrace(); } catch
-         * (IOException e) { e.printStackTrace(); }
-         */
 
         String line = Files.readAllLines(this.path, StandardCharsets.UTF_8).toString();
         line = line.toLowerCase();
-        line = Parser.removeApostrope(line);
-        line = Parser.removeHeadAndTail(line);
-        line = Parser.removeHypenate(line);
+        //System.out.println(line);
+        //line = Parser.removeApostrope(line);
+        //line = Parser.removeHeadAndTail(line);
+        //line = Parser.removeHypenate(line);
         //line = Parser.removeSpecialChar(line);
 
         /*
          * raw -> array 0 head, array 1 tail
-         */
-        String[] raw = line.split("to", 2);
+//         */
+//        Email email = new Email();
+//        String[] raw = line.split("date: ", 2);
+//        
+//        String[] date = raw[1].split("from: ", 2);
+//        email.setDate(date[0]);
+//
+//        String[] from = date[1].split("to: ", 2);
+//        email.setFrom(from[0].replaceAll(", ", ""));
+//
+//        String[] to = from[1].split("subject: ", 2);
+//        email.setTo(to[0]);
+//        //System.out.println(toTokenizer.getListTo(email.getTo()));
+//
+//        String[] subject = to[1].split("mime-version: ", 2);
+//        email.setSubject(subject[0]);
+//
+//        String[] body = subject[1].split(".*(.pst)", 2);
+//        email.setBody(body[1]);
+//        
+//        email.setPath(path.toString());
+
+        //System.out.println(email.toString());
         /*
          * split head
          */
-        String[] head = raw[0].split("from");
+        //String[] head = raw[0].split("from");
         /*
          * split tail
          */
-        String[] tail = raw[1].split("subject", 2);
+        //String[] tail = raw[1].split("subject");
         /*
          * split date
          */
@@ -139,14 +151,9 @@ public class FileReader implements Callable {
 //        line = Parser.removeHypenate(line);
 //        line = Parser.removeSpecialChar(line);
         //line = Parser.removePunc(line);
-
-        fileWalker.callback(head[0].split("date")[1], head[1].split("subject")[0], tail[0].split("\\s"), new String[]{"test"}, count);
+        //fileWalker.callback(email.getDate(), email.getFrom(),new String[]{"test"} , new String[]{"test"},count);
+        fileWalker.callback("string", "string", new String[]{"test"}, new String[]{"test"}, count);
         //fileWalker.callback(head[0].split("date")[1], head[1].split("\\s"), tail[0].split("\\s"), tail[1].split("\\s"), count);
         return null;
-    }
-
-    public void setProperty(Path aFile, int i) {
-        this.path = aFile;
-        this.count = i;
     }
 }

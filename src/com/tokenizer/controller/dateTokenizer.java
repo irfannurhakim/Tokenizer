@@ -12,7 +12,7 @@ import java.util.HashMap;
  */
 public class dateTokenizer {
     
-    public static HashMap getListDate(String date)
+    public static HashMap<String, Integer> getListDate(String date)
     {
         HashMap termList = new HashMap();
         String[] terms  = date.split(", | ");

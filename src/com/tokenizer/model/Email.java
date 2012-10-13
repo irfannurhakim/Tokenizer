@@ -14,16 +14,18 @@ public class Email {
     String subject;
     String date;
     String body;
+    String path;
 
     public Email() {
     }
 
-    public Email(String from, String to, String subject, String date, String body) {
+    public Email(String from, String to, String subject, String date, String body, String path) {
         this.from = from;
         this.to = to;
         this.subject = subject;
         this.date = date;
         this.body = body;
+        this.path = path;
     }
 
     public String getFrom() {
@@ -64,6 +66,20 @@ public class Email {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+    
+    
+    @Override 
+    public String toString() {
+        return path + "\n{\n" + " from=" + from + "\n to=" + to + "\n subject=" + subject + "\n date=" + date + "\n body=" + body + "\n}";
     }
     
     

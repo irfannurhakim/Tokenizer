@@ -42,4 +42,9 @@ public class Parser {
     public static String removePunc(String s) {
         return s.replaceAll("\\p{Punct}", " ");
     }
+    
+    public static String removeHTMLTag(String allString){
+        // menghapus semua html tag beserta atribut2nya
+        return (allString.replaceAll("<(\"[^\"]*\"|'[^']*'|[^'\">])*>", "")); 
+    }
 }
