@@ -31,10 +31,9 @@ public class FileReader implements Callable {
     private Path path;
     private int count;
 
-    public FileReader(){
-        
+    public FileReader() {
     }
-    
+
     public FileReader(File file) {
         this.file = file;
     }
@@ -82,43 +81,44 @@ public class FileReader implements Callable {
 
         String line = Files.readAllLines(this.path, StandardCharsets.UTF_8).toString();
         line = line.toLowerCase();
-        System.out.println(line);
         //line = Parser.removeApostrope(line);
         //line = Parser.removeHeadAndTail(line);
         //line = Parser.removeHypenate(line);
         //line = Parser.removeSpecialChar(line);
-        
+
         /*
          * raw -> array 0 head, array 1 tail
          */
 
         String[] raw = line.split("date: ", 2);
-        
-        String [] date = raw[1].split("from: ",2);
-        HashMap <String,Integer> dateMap = dateTokenizer.getListDate(date[0]);
-        System.out.println(dateMap);
-        
-        String [] from = date[1].split("to: ", 2);
-        HashMap <String,Integer> fromMap = FromTokenizer.getListFrom(from[0].replaceAll(", ", ""));
-        System.out.println(fromMap);
-        
-        String [] to = from[1].split("subject: ",2);
-         HashMap <String,Integer> toMap = toTokenizer.getListTo(to[0]);
-        System.out.println(toMap);
-        
-        String [] subject = to[1].split("mime-version: ", 2);
-        HashMap <String,Integer> subjectMap = subject_bodyTokenizer.getListTerm(subject[0]);
-        System.out.println(subjectMap);
-        
-        
-        String [] body = subject[1].split(", , , , ", 2);
-        HashMap <String,Integer> bodyMap = subject_bodyTokenizer.getListTerm(body[1]);
-        System.out.println(bodyMap);
 
-        HashMap <String,Integer> allFieldMap = AllFieldTokenizer.allFieldTermList(dateMap, toMap, fromMap, subjectMap, bodyMap);
-        System.out.println(allFieldMap);
-        
-        
+        String[] date = raw[1].split("from: ", 2);
+        HashMap<String, Integer> dateMap = dateTokenizer.getListDate(date[0]);
+        //System.out.println(dateMap);
+
+        String[] from = date[1].split("to: ", 2);
+        HashMap<String, Integer> fromMap = FromTokenizer.getListFrom(from[0].replaceAll(", ", ""));
+        //System.out.println(fromMap);
+
+        String[] to = from[1].split("subject: ", 2);
+        HashMap<String, Integer> toMap = toTokenizer.getListTo(to[0]);
+        //System.out.println(toMap);
+
+        String[] subject = to[1].split("mime-version: ", 2);
+        HashMap<String, Integer> subjectMap = subject_bodyTokenizer.getListTerm(subject[0]);
+        //System.out.println(subjectMap);
+
+
+        String[] body = subject[1].split("(\\.pst)|(\\.nsf)", 2);
+        //HashMap<String, Integer> bodyMap = subject_bodyTokenizer.getListTerm(body[1]);
+        HashMap<String, Integer> bodyMap = new HashMap<String, Integer>();
+        int s = body.length;
+        if(s == 1)
+            System.out.println(body.length + " " + path.toString());
+
+        HashMap<String, Integer> allFieldMap = AllFieldTokenizer.allFieldTermList(dateMap, toMap, fromMap, subjectMap, bodyMap);
+        //System.out.println(allFieldMap);
+
         /*
          * split head
          */
@@ -126,7 +126,7 @@ public class FileReader implements Callable {
         /*
          * split tail
          */
-       String[] tail = raw[1].split("subject");
+        String[] tail = raw[1].split("subject");
         /*
          * split date
          */
@@ -175,7 +175,7 @@ public class FileReader implements Callable {
 //        line = Parser.removeSpecialChar(line);
         //line = Parser.removePunc(line);
         //fileWalker.callback(email.getDate(), email.getFrom(),new String[]{"test"} , new String[]{"test"},count);
-        fileWalker.callback(head[0].split("date")[1], head[1],new String[]{"test"} , new String[]{"test"},count);
+        fileWalker.callback("string", "string", new String[]{"test"}, new String[]{"test"}, count);
         //fileWalker.callback(head[0].split("date")[1], head[1].split("\\s"), tail[0].split("\\s"), tail[1].split("\\s"), count);
         return null;
     }

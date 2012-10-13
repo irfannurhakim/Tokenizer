@@ -69,14 +69,14 @@ public class FileWalker extends SimpleFileVisitor<Path> {
             rt.gc();
         }
         
-        if (jobDone >= i) {
-            es.awaitTermination((long) 100, TimeUnit.MILLISECONDS);
+        //if (jobDone >= i) {
+          //  es.awaitTermination((long) 100, TimeUnit.MILLISECONDS);
             //ValueComparator c = new ValueComparator(fromList);
             //TreeMap<String, Integer> sorted_map = new TreeMap<String, Integer>(c);
             //sorted_map.putAll(fromList);
             //System.out.println(sorted_map);
-            System.exit(0);
-        }
+           // System.exit(0);
+        //}
         
     }
     
