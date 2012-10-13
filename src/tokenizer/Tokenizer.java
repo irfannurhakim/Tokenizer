@@ -33,7 +33,7 @@ public class Tokenizer {
          * frs.getListDirectory(file); System.exit(0);
          */
 
-        String root = "/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir";
+        String root = "/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir/";
 
 
         FileVisitor<Path> fileVisitor = new FileWalker();

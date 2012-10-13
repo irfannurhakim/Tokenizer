@@ -25,10 +25,9 @@ public class FileReader implements Callable {
     private Path path;
     private int count;
 
-    public FileReader(){
-        
+    public FileReader() {
     }
-    
+
     public FileReader(File file) {
         this.file = file;
     }
@@ -84,7 +83,7 @@ public class FileReader implements Callable {
         /*
          * raw -> array 0 head, array 1 tail
          */
-        String[] raw = line.split("to");
+        String[] raw = line.split("to", 2);
         /*
          * split head
          */
@@ -92,7 +91,7 @@ public class FileReader implements Callable {
         /*
          * split tail
          */
-        String[] tail = raw[1].split("subject");
+        String[] tail = raw[1].split("subject", 2);
         /*
          * split date
          */
@@ -141,23 +140,9 @@ public class FileReader implements Callable {
 //        line = Parser.removeSpecialChar(line);
         //line = Parser.removePunc(line);
 
-        fileWalker.callback(head[0].split("date")[1], head[1],new String[]{"test"} , new String[]{"test"},count);
+        fileWalker.callback(head[0].split("date")[1], head[1].split("subject")[0], tail[0].split("\\s"), new String[]{"test"}, count);
         //fileWalker.callback(head[0].split("date")[1], head[1].split("\\s"), tail[0].split("\\s"), tail[1].split("\\s"), count);
         return null;
-    }
-
-    private String readFile(String file) throws IOException {
-        BufferedReader reader = new BufferedReader(new java.io.FileReader(file));
-        String line = null;
-        StringBuilder stringBuilder = new StringBuilder();
-        //String ls = System.getProperty("line.separator");
-
-        while ((line = reader.readLine()) != null) {
-            stringBuilder.append(line);
-            //stringBuilder.append(ls);
-        }
-        //reader.close();
-        return stringBuilder.toString();
     }
 
     public void setProperty(Path aFile, int i) {
