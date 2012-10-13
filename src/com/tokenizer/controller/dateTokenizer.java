@@ -12,10 +12,10 @@ import java.util.HashMap;
  */
 public class dateTokenizer {
     
-    public static HashMap getListDate(String date)
+    public static HashMap<String, Integer> getListDate(String date)
     {
         HashMap termList = new HashMap();
-        String[] terms  = date.toLowerCase().split(", | ");
+        String[] terms  = date.split(", | ");
         termList.put(terms[0], 1);
         termList.put(terms[1]+terms[2]+terms[3], 1);
         termList.put(terms[4], 1);

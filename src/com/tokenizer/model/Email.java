@@ -65,6 +65,11 @@ public class Email {
     public void setBody(String body) {
         this.body = body;
     }
+
+    @Override
+    public String toString() {
+        return "Email{\n" + "from=" + from + "\n to=" + to + "\n subject=" + subject + "\n date=" + date + "\n body=" + body + "\n}";
+    }
     
     
 }

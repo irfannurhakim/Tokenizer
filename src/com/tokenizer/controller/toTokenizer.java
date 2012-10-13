@@ -14,10 +14,10 @@ public class toTokenizer {
     
     
     
-    public static HashMap getListTo(String to)
+    public static HashMap<String, Integer> getListTo(String to)
     {
-        HashMap termList = new HashMap();
-        String[] terms  = to.toLowerCase().split(",|(\\s)+|<|> ");
+        HashMap<String, Integer> termList = new HashMap<String, Integer>();
+        String[] terms  = to.split(",|(\\s)+|<|> ");
         for (int i = 0; i < terms.length; i++) {
             String key = terms[i];
             if(!key.matches(""))
@@ -35,7 +35,7 @@ public class toTokenizer {
             termList.put(key, freq);
             }
         }
-        System.out.println(termList);
+        //System.out.println(termList);
         return termList;
     }
     

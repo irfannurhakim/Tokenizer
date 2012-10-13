@@ -4,6 +4,8 @@
  */
 package com.tokenizer.util;
 
+import com.tokenizer.controller.toTokenizer;
+import com.tokenizer.model.Email;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -76,15 +78,36 @@ public class FileReader implements Callable {
 
         String line = Files.readAllLines(this.path, StandardCharsets.UTF_8).toString();
         line = line.toLowerCase();
-        line = Parser.removeApostrope(line);
-        line = Parser.removeHeadAndTail(line);
-        line = Parser.removeHypenate(line);
+        //System.out.println(line);
+        //line = Parser.removeApostrope(line);
+        //line = Parser.removeHeadAndTail(line);
+        //line = Parser.removeHypenate(line);
         //line = Parser.removeSpecialChar(line);
-
+        
         /*
          * raw -> array 0 head, array 1 tail
          */
-        String[] raw = line.split("to");
+        Email email = new Email();
+        String[] raw = line.split("date: ", 2);
+        
+        String [] date = raw[1].split("from: ",2);
+        email.setDate(date[0]);
+        
+        String [] from = date[1].split("to: ", 2);
+        email.setFrom(from[0].replaceAll(", ", ""));
+        
+        String [] to = from[1].split("subject: ",2);
+        email.setTo(to[0]);
+        System.out.println(toTokenizer.getListTo(email.getTo()));
+        
+        String [] subject = to[1].split("mime-version: ", 2);
+        email.setSubject(subject[0]);
+        
+        String [] body = subject[1].split(".*(.pst)", 2);
+        email.setBody(body[1]);
+        
+        
+        System.out.println(email.toString());
         /*
          * split head
          */
@@ -92,7 +115,7 @@ public class FileReader implements Callable {
         /*
          * split tail
          */
-        String[] tail = raw[1].split("subject");
+       String[] tail = raw[1].split("subject");
         /*
          * split date
          */
@@ -140,7 +163,7 @@ public class FileReader implements Callable {
 //        line = Parser.removeHypenate(line);
 //        line = Parser.removeSpecialChar(line);
         //line = Parser.removePunc(line);
-
+        //fileWalker.callback(email.getDate(), email.getFrom(),new String[]{"test"} , new String[]{"test"},count);
         fileWalker.callback(head[0].split("date")[1], head[1],new String[]{"test"} , new String[]{"test"},count);
         //fileWalker.callback(head[0].split("date")[1], head[1].split("\\s"), tail[0].split("\\s"), tail[1].split("\\s"), count);
         return null;

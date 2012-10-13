@@ -49,11 +49,16 @@ public class FinaMainTest {
         
         //System.out.println(as);
         
-        String test2="<div id=\"related-results\">     <h2>         More Results searching for &#8220;<span class=\"search-term\">html tag regex</span>&#8221;         <a href=\"#related-results\" class=\"close\"></a>      </h2>      <div class=\"content\">          <p>             It looks like you found this post via a search engine result.<br />             Here are a few other posts you might find interesting:          </p> 			    <ul class=\"morelist\"> 			        <li class=\"morelistitem\"> 				        <a id=\"ctl07_Links_ctl01_Link\" href=\"/archive/2005/04/22/Matching_HTML_With_Regex.aspx\" target=\"_blank\">Matching HTML With Regular Expressions Redux</a> 				        <a id=\"ctl07_Links_ctl01_EditReadingLink\" href=\"javascript:__doPostBack(&#39;ctl07$Links$ctl01$EditReadingLink&#39;,&#39;&#39;)\"></a> 		            </li> 			        <li class=\"morelistitem\"> 				        <a id=\"ctl07_Links_ctl02_Link\" href=\"/archive/2007/08/13/speed-up-your-pages-and-improve-your-yslow-score-with.aspx\" target=\"_blank\">Speed Up Your Pages And Improve Your YSlow Score With The Coral Content Distribution Network</a> 				        <a id=\"ctl07_Links_ctl02_EditReadingLink\" href=\"javascript:__doPostBack(&#39;ctl07$Links$ctl02$EditReadingLink&#39;,&#39;&#39;)\"></a> 		            </li> 			    </ul> 			    <a href=\"/search.aspx?q=html%20tag%20regex\" id=\"ctl07_Links_ctl03_searchMore\" class=\"more-results\">Click for all Search Results for html tag regex</a> 	</div>";
+        /*String test2="<div id=\"related-results\">     <h2>         More Results searching for &#8220;<span class=\"search-term\">html tag regex</span>&#8221;         <a href=\"#related-results\" class=\"close\"></a>      </h2>      <div class=\"content\">          <p>             It looks like you found this post via a search engine result.<br />             Here are a few other posts you might find interesting:          </p> 			    <ul class=\"morelist\"> 			        <li class=\"morelistitem\"> 				        <a id=\"ctl07_Links_ctl01_Link\" href=\"/archive/2005/04/22/Matching_HTML_With_Regex.aspx\" target=\"_blank\">Matching HTML With Regular Expressions Redux</a> 				        <a id=\"ctl07_Links_ctl01_EditReadingLink\" href=\"javascript:__doPostBack(&#39;ctl07$Links$ctl01$EditReadingLink&#39;,&#39;&#39;)\"></a> 		            </li> 			        <li class=\"morelistitem\"> 				        <a id=\"ctl07_Links_ctl02_Link\" href=\"/archive/2007/08/13/speed-up-your-pages-and-improve-your-yslow-score-with.aspx\" target=\"_blank\">Speed Up Your Pages And Improve Your YSlow Score With The Coral Content Distribution Network</a> 				        <a id=\"ctl07_Links_ctl02_EditReadingLink\" href=\"javascript:__doPostBack(&#39;ctl07$Links$ctl02$EditReadingLink&#39;,&#39;&#39;)\"></a> 		            </li> 			    </ul> 			    <a href=\"/search.aspx?q=html%20tag%20regex\" id=\"ctl07_Links_ctl03_searchMore\" class=\"more-results\">Click for all Search Results for html tag regex</a> 	</div>";
         //test2.replaceAll("\\t", "");
-        test2 =test2.replaceAll("<(\"[^\"]*\"|'[^']*'|[^'\">])*>", "");
+        test2 =StringParserMethod.removeHTMLTag(test2);
         test2=test2.replaceAll("\\s", "");
-        System.out.println(test2);
+        System.out.println(test2);*/
+        
+        String test3 ="X-Origin: CARSON-M X-FileName: mike carson 6-25-02.PST-----Original Appointment-----".toLowerCase();
+        String coba[] =test3.split(".*(.pst)", 2);
+        //System.out.println(coba[0]);
+        System.out.println(coba[1]);
 	    
     }
     
