@@ -21,11 +21,16 @@ import java.util.concurrent.TimeUnit;
  * @author irfannurhakim
  */
 public class FileWalker extends SimpleFileVisitor<Path> {
-    
-    private ExecutorService es = Executors.newFixedThreadPool(100);
+    int nrOfProcessors = Runtime.getRuntime().availableProcessors();
+    private ExecutorService es = Executors.newFixedThreadPool(nrOfProcessors);
     private Map<String, Integer> fromList = new HashMap<String, Integer>();
     private Runtime rt = Runtime.getRuntime();
-    private int i = 0;
+    private int i = 0, j = 1;
+    long startTime;
+    
+    public FileWalker(){
+        startTime = System.nanoTime();
+    }
     
     @Override
     public FileVisitResult visitFile(
@@ -40,7 +45,6 @@ public class FileWalker extends SimpleFileVisitor<Path> {
             FileReader task = new FileReader(aFile, i);
             task.setCaller(this);
             es.submit(task);
-            
         }
         return FileVisitResult.CONTINUE;
     }
@@ -55,28 +59,33 @@ public class FileWalker extends SimpleFileVisitor<Path> {
     }
     
     public void callback(String date, String from, String[] to, String[] body, int jobDone) throws InterruptedException {
-
+        //j++;
         /*
          * if (!from.matches("")) { Integer freq = (Integer) fromList.get(from);
          * if (freq == null) { freq = new Integer(1); } else { int value =
          * freq.intValue(); freq = new Integer(value + 1); } fromList.put(from,
          * freq); }
          */
+        if(to.length ==1)
+            System.out.println(date);
         
         if (jobDone % 1000 == 0) {
-            System.out.println("job done " + jobDone + " from: " + i);
+            System.out.println("job done " + jobDone + " from: " + i + " in : " + ((System.nanoTime() - startTime) / 1000000000.0) + "sec");
             rt.gc();
             rt.gc();
         }
         
-        //if (jobDone >= i) {
-          //  es.awaitTermination((long) 100, TimeUnit.MILLISECONDS);
+        if (jobDone >= i) {
+            es.shutdown();
+            es.awaitTermination((long) 1000, TimeUnit.MILLISECONDS);
+            
+            
             //ValueComparator c = new ValueComparator(fromList);
             //TreeMap<String, Integer> sorted_map = new TreeMap<String, Integer>(c);
             //sorted_map.putAll(fromList);
             //System.out.println(sorted_map);
-           // System.exit(0);
-        //}
+            System.exit(0);
+        }
         
     }
     

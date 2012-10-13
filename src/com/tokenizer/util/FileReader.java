@@ -79,8 +79,8 @@ public class FileReader implements Callable {
          * (IOException e) { e.printStackTrace(); }
          */
 
-        String line = Files.readAllLines(this.path, StandardCharsets.UTF_8).toString();
-        line = line.toLowerCase();
+        String line = Files.readAllLines(this.path, StandardCharsets.UTF_8).toString().toLowerCase();
+        //System.out.println(line);
         //line = Parser.removeApostrope(line);
         //line = Parser.removeHeadAndTail(line);
         //line = Parser.removeHypenate(line);
@@ -91,30 +91,29 @@ public class FileReader implements Callable {
          */
 
         String[] raw = line.split("date: ", 2);
-
+        
         String[] date = raw[1].split("from: ", 2);
         HashMap<String, Integer> dateMap = dateTokenizer.getListDate(date[0]);
         //System.out.println(dateMap);
-
+        
+        if(date.length == 1) date[1] = "";
         String[] from = date[1].split("to: ", 2);
         HashMap<String, Integer> fromMap = FromTokenizer.getListFrom(from[0].replaceAll(", ", ""));
         //System.out.println(fromMap);
-
+        if(from.length == 1) from[1] = "";
         String[] to = from[1].split("subject: ", 2);
         HashMap<String, Integer> toMap = toTokenizer.getListTo(to[0]);
         //System.out.println(toMap);
 
+        if(to.length == 1) to[1] = "";
         String[] subject = to[1].split("mime-version: ", 2);
         HashMap<String, Integer> subjectMap = subject_bodyTokenizer.getListTerm(subject[0]);
         //System.out.println(subjectMap);
 
-
-        String[] body = subject[1].split("(\\.pst)|(\\.nsf)", 2);
-        //HashMap<String, Integer> bodyMap = subject_bodyTokenizer.getListTerm(body[1]);
-        HashMap<String, Integer> bodyMap = new HashMap<String, Integer>();
-        int s = body.length;
-        if(s == 1)
-            System.out.println(body.length + " " + path.toString());
+        if(subject.length ==1) subject[1] = "";
+        String[] body = subject[1].split(".*([pP][sS][tT]|[nN][sS][fF]).*", 2);
+        HashMap<String, Integer> bodyMap = subject_bodyTokenizer.getListTerm(body[1]);
+        //HashMap<String, Integer> bodyMap = new HashMap<String, Integer>();        
 
         HashMap<String, Integer> allFieldMap = AllFieldTokenizer.allFieldTermList(dateMap, toMap, fromMap, subjectMap, bodyMap);
         //System.out.println(allFieldMap);
@@ -122,11 +121,11 @@ public class FileReader implements Callable {
         /*
          * split head
          */
-        String[] head = raw[0].split("from");
+       // String[] head = raw[0].split("from");
         /*
          * split tail
          */
-        String[] tail = raw[1].split("subject");
+        //String[] tail = raw[1].split("subject");
         /*
          * split date
          */
@@ -175,7 +174,7 @@ public class FileReader implements Callable {
 //        line = Parser.removeSpecialChar(line);
         //line = Parser.removePunc(line);
         //fileWalker.callback(email.getDate(), email.getFrom(),new String[]{"test"} , new String[]{"test"},count);
-        fileWalker.callback("string", "string", new String[]{"test"}, new String[]{"test"}, count);
+        fileWalker.callback(path.toString(), "", raw, new String[]{"test"}, count);
         //fileWalker.callback(head[0].split("date")[1], head[1].split("\\s"), tail[0].split("\\s"), tail[1].split("\\s"), count);
         return null;
     }
