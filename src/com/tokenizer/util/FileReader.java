@@ -9,6 +9,7 @@ import com.tokenizer.controller.FromTokenizer;
 import com.tokenizer.controller.dateTokenizer;
 import com.tokenizer.controller.subject_bodyTokenizer;
 import com.tokenizer.controller.toTokenizer;
+import com.tokenizer.model.BigConcurentHashMap;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -81,8 +82,8 @@ public class FileReader implements Callable {
          */
 
         String line = Files.readAllLines(this.path, StandardCharsets.UTF_8).toString();
-        line = line.toLowerCase();
-        System.out.println(line);
+        line = line.toLowerCase().replaceAll("x-to:|x-form:", "");
+        //System.out.println(line);
         //line = Parser.removeApostrope(line);
         //line = Parser.removeHeadAndTail(line);
         //line = Parser.removeHypenate(line);
@@ -96,27 +97,48 @@ public class FileReader implements Callable {
         
         String [] date = raw[1].split("from: ",2);
         HashMap <String,Integer> dateMap = dateTokenizer.getListDate(date[0]);
-        System.out.println(dateMap);
+        //System.out.println(dateMap);
         
         String [] from = date[1].split("to: ", 2);
         HashMap <String,Integer> fromMap = FromTokenizer.getListFrom(from[0].replaceAll(", ", ""));
-        System.out.println(fromMap);
+        //System.out.println(fromMap);
         
         String [] to = from[1].split("subject: ",2);
          HashMap <String,Integer> toMap = toTokenizer.getListTo(to[0]);
-        System.out.println(toMap);
+         if(toMap.size()!=0)
+         {
+        //System.out.println(toMap);
+         }
+        /*synchronized(BigConcurentHashMap.toConcurentMap)
+        {
+        BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.toConcurentMap, toMap);
+        System.out.println("BIG MAP = "+BigConcurentHashMap.toConcurentMap);
+        }*/
         
         String [] subject = to[1].split("mime-version: ", 2);
         HashMap <String,Integer> subjectMap = subject_bodyTokenizer.getListTerm(subject[0]);
-        System.out.println(subjectMap);
+        //System.out.println(subjectMap);
         
         
-        String [] body = subject[1].split(", , , , ", 2);
-        HashMap <String,Integer> bodyMap = subject_bodyTokenizer.getListTerm(body[1]);
-        System.out.println(bodyMap);
+       // String [] body = subject[1].split(",\\s+,\\s+,\\s+,\\s+", 2);
+        HashMap <String,Integer> bodyMap = new HashMap<String, Integer>();
+        
+            String [] body = subject[1].split("(\\.pst)|(\\.nsf)", 2);
+            //if(!body[1].startsWith(", , "))
+            {
+            System.out.println(body[1]);
+            }
+            bodyMap= subject_bodyTokenizer.getListTerm(body[1]);
+       
+       
+//        if(body.length!=2)
+//        {
+//        System.out.println(body.length);
+//        }
+        //System.out.println(bodyMap);
 
         HashMap <String,Integer> allFieldMap = AllFieldTokenizer.allFieldTermList(dateMap, toMap, fromMap, subjectMap, bodyMap);
-        System.out.println(allFieldMap);
+        //System.out.println(allFieldMap);
         
         
         /*
