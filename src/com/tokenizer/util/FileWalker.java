@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class FileWalker extends SimpleFileVisitor<Path> {
     
-    private ExecutorService es = Executors.newFixedThreadPool(100);
+    private ExecutorService es = Executors.newFixedThreadPool(50);
     private Map<String, Integer> fromList = new HashMap<String, Integer>();
     private Runtime rt = Runtime.getRuntime();
     private int i = 0;
@@ -62,7 +62,6 @@ public class FileWalker extends SimpleFileVisitor<Path> {
          * freq.intValue(); freq = new Integer(value + 1); } fromList.put(from,
          * freq); }
          */
-        
         if (jobDone % 1000 == 0) {
             System.out.println("job done " + jobDone + " from: " + i);
             rt.gc();

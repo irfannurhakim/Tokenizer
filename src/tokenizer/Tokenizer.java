@@ -17,9 +17,11 @@ import java.nio.file.Paths;
  */
 public class Tokenizer {
 
+    public static int[] N_messagge = {0,0,0,0,0,0}; // date, to, from, subject, body, all
     /**
      * @param args the command line arguments
      */
+    @SuppressWarnings("empty-statement")
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         //int nrOfProcessors = Runtime.getRuntime().availableProcessors();
@@ -32,9 +34,9 @@ public class Tokenizer {
          * FileRecursiveReader frs = new FileRecursiveReader(es);
          * frs.getListDirectory(file); System.exit(0);
          */
-
+        
         //String root = "/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir";
-        String root ="D:\\Kuliah_S2\\IF6054_Teknologi_Mesin_Pencari\\Tugas\\enron_mail_20110402\\enron_mail_20110402\\maildir\\allen-p\\discussion_threads";
+        String root ="D:\\Kuliah_S2\\IF6054_Teknologi_Mesin_Pencari\\Tugas\\enron_mail_20110402\\enron_mail_20110402\\maildir\\allen-p\\inbox";
 
         FileVisitor<Path> fileVisitor = new FileWalker();
         Files.walkFileTree(Paths.get(root), fileVisitor);

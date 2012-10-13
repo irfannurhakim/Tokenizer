@@ -4,11 +4,13 @@
  */
 package com.tokenizer.model;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import tokenizer.Tokenizer;
 
 /**
  *
@@ -27,9 +29,7 @@ public class BigConcurentHashMap {
         // Get a set of the entries 
         
         Set set = b.entrySet();
-// Get an iterator 
         Iterator i = set.iterator();
-// Display elements 
         while (i.hasNext()) {
             Map.Entry me = (Map.Entry) i.next();
             String newKey = (String) me.getKey();
@@ -50,7 +50,24 @@ public class BigConcurentHashMap {
             }
             a.put(newKey, freq);
         }
-        
-    }
+     }
+        public static void calculateTermWight (ConcurrentHashMap<String, TermCounter> a , int index)
+        {
+            Set set = a.entrySet();
+            Iterator i = set.iterator();
+             while (i.hasNext())
+             {
+                 Map.Entry me = (Map.Entry) i.next();
+                 String newKey = (String) me.getKey();
+                 TermCounter newval = (TermCounter)me.getValue();
+                 double tokenWeight = ((double)newval.getTotalTerm()/Tokenizer.N_messagge[index])*Math.log(Tokenizer.N_messagge[index]/(double)newval.getTotalDocument());
+                 newval.setTokenWeight(tokenWeight);
+                 a.put(newKey, newval);
+             }
+
+            // Collections.sort(a, new TermCounter.WeightComparator());
+             
+        }
+    
     
 }
