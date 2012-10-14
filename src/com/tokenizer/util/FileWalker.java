@@ -28,7 +28,7 @@ import tokenizer.Tokenizer;
 public class FileWalker extends SimpleFileVisitor<Path> {
 
     int nrOfProcessors = Runtime.getRuntime().availableProcessors();
-    private ExecutorService es = Executors.newFixedThreadPool(50);
+    private ExecutorService es = Executors.newFixedThreadPool(nrOfProcessors);
     private Map<String, Integer> fromList = new HashMap<String, Integer>();
     private Runtime rt = Runtime.getRuntime();
     private int i = 0, j = 1;
@@ -73,8 +73,8 @@ public class FileWalker extends SimpleFileVisitor<Path> {
         }
 
         if (jobDone >= i) {
-            //es.shutdown();
-            es.awaitTermination((long) 1000, TimeUnit.MILLISECONDS);
+            es.shutdown();
+            es.awaitTermination((long) 100, TimeUnit.MILLISECONDS);
 
             //ValueComparator c = new ValueComparator(fromList);
             //TreeMap<String, Integer> sorted_map = new TreeMap<String, Integer>(c);
