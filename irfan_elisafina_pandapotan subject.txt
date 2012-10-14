@@ -1,7 +1,7 @@
 irfan_elisafina_pandapotan subject N 2406
-irfan_elisafina_pandapotan subject TO 3692
-irfan_elisafina_pandapotan subject UT 1898
-irfan_elisafina_pandapotan subject 1  546 164 0.609508121328301
+irfan_elisafina_pandapotan subject TO 3759
+irfan_elisafina_pandapotan subject UT 1864
+irfan_elisafina_pandapotan subject 1  565 177 0.6128045335153156
 irfan_elisafina_pandapotan subject 2 re 719 719 0.3609522063204332
 irfan_elisafina_pandapotan subject 3 for 171 165 0.19045785422710784
 irfan_elisafina_pandapotan subject 4 cc 148 148 0.1715292087157254
@@ -19,25 +19,25 @@ irfan_elisafina_pandapotan subject 15 access 74 74 0.10708334557209212
 irfan_elisafina_pandapotan subject 16 meeting 74 74 0.10708334557209212
 irfan_elisafina_pandapotan subject 17 new 69 69 0.1018542780730167
 irfan_elisafina_pandapotan subject 18 on 67 67 0.09972107006177269
-irfan_elisafina_pandapotan subject 19 is 56 51 0.08969997289001527
-irfan_elisafina_pandapotan subject 20 a 53 42 0.08917153688583399
-irfan_elisafina_pandapotan subject 21 from 55 54 0.0867915738771277
-irfan_elisafina_pandapotan subject 22 approval 54 54 0.08521354526117993
-irfan_elisafina_pandapotan subject 23 2001 52 51 0.08329283196929989
-irfan_elisafina_pandapotan subject 24 allen 51 51 0.08169104673912105
-irfan_elisafina_pandapotan subject 25 west 43 43 0.07192618186873052
-irfan_elisafina_pandapotan subject 26 report 41 41 0.06939239485579508
-irfan_elisafina_pandapotan subject 27 western 39 39 0.06681804271230013
-irfan_elisafina_pandapotan subject 28 stage 39 39 0.06681804271230013
-irfan_elisafina_pandapotan subject 29 california 38 38 0.06551501246829304
-irfan_elisafina_pandapotan subject 30 overdue 38 38 0.06551501246829304
-irfan_elisafina_pandapotan subject 31 phillip 37 37 0.06420104339316077
-irfan_elisafina_pandapotan subject 32 power 35 35 0.06153908945410739
-irfan_elisafina_pandapotan subject 33 in 33 33 0.05882960933385235
-irfan_elisafina_pandapotan subject 34 price 32 32 0.05745615951767113
-irfan_elisafina_pandapotan subject 35 information 31 30 0.05649219823817395
-irfan_elisafina_pandapotan subject 36 update 31 31 0.05606971922424514
-irfan_elisafina_pandapotan subject 37 this 30 30 0.05466986926274899
-irfan_elisafina_pandapotan subject 38 matt.smith@enron.com 29 29 0.05325616248125368
-irfan_elisafina_pandapotan subject 39 by 28 27 0.05225135197624616
-irfan_elisafina_pandapotan subject 40 desk 27 23 0.052184588685098836
+irfan_elisafina_pandapotan subject 19 2001 63 62 0.09579839992678327
+irfan_elisafina_pandapotan subject 20 is 56 51 0.08969997289001527
+irfan_elisafina_pandapotan subject 21 a 53 42 0.08917153688583399
+irfan_elisafina_pandapotan subject 22 from 55 54 0.0867915738771277
+irfan_elisafina_pandapotan subject 23 01 51 42 0.08580657322976479
+irfan_elisafina_pandapotan subject 24 approval 54 54 0.08521354526117993
+irfan_elisafina_pandapotan subject 25 allen 51 51 0.08169104673912105
+irfan_elisafina_pandapotan subject 26 west 43 43 0.07192618186873052
+irfan_elisafina_pandapotan subject 27 report 41 41 0.06939239485579508
+irfan_elisafina_pandapotan subject 28 western 39 39 0.06681804271230013
+irfan_elisafina_pandapotan subject 29 stage 39 39 0.06681804271230013
+irfan_elisafina_pandapotan subject 30 california 38 38 0.06551501246829304
+irfan_elisafina_pandapotan subject 31 overdue 38 38 0.06551501246829304
+irfan_elisafina_pandapotan subject 32 phillip 37 37 0.06420104339316077
+irfan_elisafina_pandapotan subject 33 10 34 27 0.06344807025687033
+irfan_elisafina_pandapotan subject 34 2 36 36 0.06287583977174833
+irfan_elisafina_pandapotan subject 35 power 35 35 0.06153908945410739
+irfan_elisafina_pandapotan subject 36 in 33 33 0.05882960933385235
+irfan_elisafina_pandapotan subject 37 price 32 32 0.05745615951767113
+irfan_elisafina_pandapotan subject 38 information 31 30 0.05649219823817395
+irfan_elisafina_pandapotan subject 39 update 31 31 0.05606971922424514
+irfan_elisafina_pandapotan subject 40 this 30 30 0.05466986926274899

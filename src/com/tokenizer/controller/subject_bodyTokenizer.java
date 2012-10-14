@@ -32,9 +32,10 @@ public class subject_bodyTokenizer {
                 s = Parser.removePunc(s);
                 //s = Parser.removePuncuation(s);
                 
-                if (Parser.isNeedSplit(s) && !s.matches(EMAIL_PATTERN)) {
+                if (!s.matches(EMAIL_PATTERN)) {
                     //System.out.println(s);
-                    String[] slices = Parser.splitSpecialChar(s);
+                    s = Parser.removePuncuation(s);
+                    String[] slices = s.split(" ");
                     for (String slice : slices) {
                         if (!slice.equals("\\W+")) {
                             putToHashMap(slice, termList);

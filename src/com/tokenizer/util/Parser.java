@@ -4,6 +4,8 @@
  */
 package com.tokenizer.util;
 
+import java.util.regex.Pattern;
+
 /**
  *
  * @author irfannurhakim
@@ -26,7 +28,9 @@ public class Parser {
     }
 
     public static String removeApostrope(String s) {
-        return s.replaceAll("'s", "").replaceAll("'", "");
+        s =Pattern.compile("'s").matcher(s).replaceAll("");
+        s =Pattern.compile("'").matcher(s).replaceAll("");
+        return s;
     }
 
     public static String removeHypenate(String s) {
@@ -41,12 +45,14 @@ public class Parser {
 //    }
 
     public static String removePuncuation(String s) {
-        return s.replaceAll("\\p{Punct}", " ");
+        return (Pattern.compile("\\p{Punct}").matcher(s).replaceAll(" "));
+        //return s.replaceAll("\\p{Punct}", " ");
     }
     
     public static String removeHTMLTag(String allString){
         // menghapus semua html tag beserta atribut2nya
-        return (allString.replaceAll("<(\"[^\"]*\"|'[^']*'|[^'\">])*>", "")); 
+        return (Pattern.compile("<(\"[^\"]*\"|'[^']*'|[^'\">])*>").matcher(allString).replaceAll(""));
+        //return (allString.replaceAll("<(\"[^\"]*\"|'[^']*'|[^'\">])*>", "")); 
     }
     
     public static boolean isNeedSplit(String partString)
