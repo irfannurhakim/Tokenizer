@@ -15,6 +15,17 @@ import java.util.Set;
  */
 public class AllFieldTokenizer {
 
+    /**
+     * author: Elisafina
+     * menggabungkan hashmap yang didapat dari masing-masing field, sehingga didapat hashmap untuk 1 hashmap
+     * yang nenampung seluruh isi field date, to, from, subject, body (untuk field "all")
+     * @param date
+     * @param to
+     * @param from
+     * @param subject
+     * @param body
+     * @return hashmap untuk all field
+     */
     public static HashMap<String, Integer> allFieldTermList(HashMap<String, Integer> date, HashMap<String, Integer> to, HashMap<String, Integer> from, HashMap<String, Integer> subject, HashMap<String, Integer> body) {
         HashMap<String, Integer> all = new HashMap<String, Integer>();
         all = mergeHashMap(all, date);
@@ -26,13 +37,18 @@ public class AllFieldTokenizer {
 
     }
 
+    
+    /**
+     * author: Elisafina
+     * adalah method untuk menggabungkan suatu hashmap dengan hashmap lain. 
+     * @param a hashmap pertama
+     * @param b hashmap kedua
+     * @return hasil penggabungan hashmap pertama dan kedua
+     */
     public static HashMap<String, Integer> mergeHashMap(HashMap<String, Integer> a, HashMap<String, Integer> b) {
-        // Get a set of the entries 
 
         Set set = b.entrySet();
-// Get an iterator 
         Iterator i = set.iterator();
-// Display elements 
         while (i.hasNext()) {
             Map.Entry me = (Map.Entry) i.next();
             String newKey = (String) me.getKey();

@@ -55,21 +55,4 @@ public class TermCounter   {
     public String toString() {
         return "TermCounter{" + "totalTerm=" + totalTerm + ", totalDocument=" + totalDocument + ", tokenWeight=" + tokenWeight + '}';
     }
-
-   
-
- 
-    static class WeightComparator implements Comparator {
-    public int compare(Object o1, Object o2) {
-      if (!(o1 instanceof TermCounter) || !(o2 instanceof TermCounter))
-        throw new ClassCastException();
-
-      TermCounter e1 = (TermCounter) o1;
-      TermCounter e2 = (TermCounter) o2;
-
-      return (int) (e1.getTokenWeight() - e2.getTokenWeight());
-    }
-  }
-    
-    
 }

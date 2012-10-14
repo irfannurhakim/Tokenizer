@@ -16,6 +16,12 @@ public class FromTokenizer {
             "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
+    /**
+     * author: Elisafina
+     * untuk menampung string from dari suatu file ke dalam bentuk hashmap
+     * @param from
+     * @return hashmap dari field from
+     */
     public static HashMap<String, Integer> getListFrom(String from) {
         HashMap<String, Integer> termList = new HashMap<String, Integer>();
         
