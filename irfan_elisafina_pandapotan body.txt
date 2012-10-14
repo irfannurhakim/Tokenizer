@@ -1,0 +1,43 @@
+irfan_elisafina_pandapotan body N 2406
+irfan_elisafina_pandapotan body TO 140801
+irfan_elisafina_pandapotan body UT 17474
+irfan_elisafina_pandapotan body 1 ect 8286 658 4.465058723077439
+irfan_elisafina_pandapotan body 2 enron 7094 793 3.2724913157685007
+irfan_elisafina_pandapotan body 3 hou 4828 655 2.610823595520436
+irfan_elisafina_pandapotan body 4 09 2924 294 2.554721804558993
+irfan_elisafina_pandapotan body 5 image 1724 124 2.12486176497199
+irfan_elisafina_pandapotan body 6 ees 1462 82 2.0532420661817468
+irfan_elisafina_pandapotan body 7 of 6279 1262 1.683972091317012
+irfan_elisafina_pandapotan body 8 the 16562 1886 1.6762136787187483
+irfan_elisafina_pandapotan body 9 and 7291 1417 1.6043341155649187
+irfan_elisafina_pandapotan body 10 00 1821 307 1.5582743159739254
+irfan_elisafina_pandapotan body 11 a 5936 1387 1.3589701657691973
+irfan_elisafina_pandapotan body 12 com 2631 722 1.316260822259173
+irfan_elisafina_pandapotan body 13 na 1085 153 1.2425112335948774
+irfan_elisafina_pandapotan body 14 in 4273 1216 1.2119244462669871
+irfan_elisafina_pandapotan body 15 enronxgate 769 55 1.207639297585767
+irfan_elisafina_pandapotan body 16 2001 2350 712 1.189302167513809
+irfan_elisafina_pandapotan body 17 20 1207 238 1.1605712464654288
+irfan_elisafina_pandapotan body 18 i 3896 1204 1.1210574357914305
+irfan_elisafina_pandapotan body 19 corp 1308 308 1.1175197076217178
+irfan_elisafina_pandapotan body 20 to 12267 1933 1.1160238085376721
+irfan_elisafina_pandapotan body 21 3d 415 5 1.0653189685792674
+irfan_elisafina_pandapotan body 22 that 2523 896 1.0358146966006265
+irfan_elisafina_pandapotan body 23 1 1636 533 1.024845526515097
+irfan_elisafina_pandapotan body 24 for 4603 1410 1.0223326385230982
+irfan_elisafina_pandapotan body 25 at 2288 824 1.0189971898746255
+irfan_elisafina_pandapotan body 26 your 2201 813 0.9925446887605888
+irfan_elisafina_pandapotan body 27 you 4981 1498 0.980952120686037
+irfan_elisafina_pandapotan body 28 we 2053 771 0.9710643265420066
+irfan_elisafina_pandapotan body 29 0 805 136 0.9612710468382589
+irfan_elisafina_pandapotan body 30 this 3138 1157 0.9548795350756001
+irfan_elisafina_pandapotan body 31 2000 1413 476 0.9515744799561211
+irfan_elisafina_pandapotan body 32 be 2534 977 0.9491802059610667
+irfan_elisafina_pandapotan body 33 is 3961 1353 0.947678746462658
+irfan_elisafina_pandapotan body 34 as 1994 767 0.9474683232600715
+irfan_elisafina_pandapotan body 35 zdnet 480 22 0.9365942031274431
+irfan_elisafina_pandapotan body 36 on 4406 1451 0.9260889060365016
+irfan_elisafina_pandapotan body 37 from 2588 1036 0.9063361803719562
+irfan_elisafina_pandapotan body 38 will 2224 911 0.897713994342002
+irfan_elisafina_pandapotan body 39 or 1910 780 0.8942126042333272
+irfan_elisafina_pandapotan body 40 buy 655 99 0.8685967104704999

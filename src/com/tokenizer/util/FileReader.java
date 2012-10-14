@@ -4,12 +4,8 @@
  */
 package com.tokenizer.util;
 
-import com.tokenizer.controller.AllFieldTokenizer;
-import com.tokenizer.controller.FromTokenizer;
-import com.tokenizer.controller.dateTokenizer;
-import com.tokenizer.controller.subject_bodyTokenizer;
-import com.tokenizer.controller.toTokenizer;
-import java.io.BufferedReader;
+import com.tokenizer.controller.*;
+import com.tokenizer.model.BigConcurentHashMap;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -29,9 +25,10 @@ public class FileReader implements Callable {
     private Path path;
     private int count;
 
-    public FileReader() {
+    public FileReader(){
+        
     }
-
+    
     public FileReader(File file) {
         this.file = file;
     }
@@ -65,16 +62,25 @@ public class FileReader implements Callable {
     @Override
     public Object call() throws IOException, InterruptedException {
 
-        String line = Files.readAllLines(this.path, StandardCharsets.UTF_8).toString().toLowerCase();
-
+        String line = Files.readAllLines(this.path, StandardCharsets.UTF_8).toString().toLowerCase().replaceAll("x-to|x-from", "");
+        //System.out.println(line);
+     
+        
         /*
          * raw -> array 0 head, array 1 tail
          */
         String[] raw = line.split("date: ", 2);
-
-        String[] date = raw[1].split("from: ", 2);
-        HashMap<String, Integer> dateMap = dateTokenizer.getListDate(date[0]);
+        
+        String [] date = raw[1].split("from: ",2);
+        HashMap <String,Integer> dateMap = dateTokenizer.getListDate(date[0]);    
+        
+        synchronized(BigConcurentHashMap.dateConcurentMap )
+        {
+        BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.dateConcurentMap, dateMap);
+        }
+        
         //System.out.println(dateMap);
+        
         if (date.length == 1) {
             date[1] = "";
         }
@@ -84,11 +90,16 @@ public class FileReader implements Callable {
             from = date[1].split("to: ", 2);
         } else {
             from = date;
+        }        
+        
+        HashMap <String,Integer> fromMap = FromTokenizer.getListFrom(from[0].replaceAll(", ", ""));
+        
+        synchronized(BigConcurentHashMap.fromConcurentMap )
+        {
+        BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.fromConcurentMap, fromMap);
         }
-
-        HashMap<String, Integer> fromMap = FromTokenizer.getListFrom(from[0]);
         //System.out.println(fromMap);
-
+        
         if (from.length == 1) {
             from[1] = "";
         }
@@ -99,9 +110,14 @@ public class FileReader implements Callable {
         } else {
             to = from;
         }
-
-        HashMap<String, Integer> toMap = toTokenizer.getListTo(to[0]);
-        //System.out.println(toMap);
+        
+        HashMap <String,Integer> toMap = toTokenizer.getListTo(to[0]);
+         
+        synchronized(BigConcurentHashMap.toConcurentMap )
+        {
+        BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.toConcurentMap, toMap);
+        }
+        
         if (to.length == 1) {
             to[1] = "";
         }
@@ -112,10 +128,17 @@ public class FileReader implements Callable {
         } else {
             subject = to;
         }
+        
+        HashMap <String,Integer> subjectMap = subject_bodyTokenizer.getListTerm(subject[0]);
+        
+        synchronized(BigConcurentHashMap.subjectConcurentMap )
+        {
+        BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.subjectConcurentMap, subjectMap);
+        }
 
-        HashMap<String, Integer> subjectMap = subject_bodyTokenizer.getListTerm(subject[0]);
-        //System.out.println(subjectMap);
-
+        HashMap <String,Integer> bodyMap = new HashMap<String, Integer>();
+        
+        
         if (subject.length == 1) {
             subject[1] = "";
         }
@@ -129,68 +152,24 @@ public class FileReader implements Callable {
 
         if (body.length == 1) {
             body[1] = "";
+        }        
+        
+        bodyMap= subject_bodyTokenizer.getListTerm(body[1]);
+        
+        synchronized(BigConcurentHashMap.bodyConcurentMap )
+        {
+        BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.bodyConcurentMap, bodyMap);
         }
-        HashMap<String, Integer> bodyMap = subject_bodyTokenizer.getListTerm(body[1]);
-        //System.out.println(bodyMap);
-
-        HashMap<String, Integer> allFieldMap = AllFieldTokenizer.allFieldTermList(dateMap, toMap, fromMap, subjectMap, bodyMap);
+       
+        HashMap <String,Integer> allFieldMap = AllFieldTokenizer.allFieldTermList(dateMap, toMap, fromMap, subjectMap, bodyMap);
+       
+        synchronized(BigConcurentHashMap.allConcurentMap )
+        {
+        BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.allConcurentMap, allFieldMap);
+        }
         //System.out.println(allFieldMap);
-
-        /*
-         * split head
-         */
-        // String[] head = raw[0].split("from");
-        /*
-         * split tail
-         */
-        //String[] tail = raw[1].split("subject");
-        /*
-         * split date
-         */
-
-        //String date = head[0].split("date")[1];
-        /*
-         * split head to get 'from' in array 1
-         */
-        //String[] from = head[1].split("\\s");
-        /*
-         * split tail, and get array 0 to perform get 'to'
-         */
-        //String[] to = tail[0].split("\\s");
-        /*
-         * split to get raw body
-         */
-        //String[] body = tail[1].split("\\s");
-
-
-//Using FileChannel
-
-//        String line = null;
-//        FileInputStream stream = new FileInputStream(this.path.toFile());
-//        try {
-//            FileChannel fc = stream.getChannel();
-//            MappedByteBuffer bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
-//            /*
-//             * Instead of using default, pass in a decoder.
-//             */
-//            line = Charset.defaultCharset().decode(bb).toString();
-//            line = line.toLowerCase();
-//            line = Parser.removeApostrope(line);
-//            line = Parser.removeHeadAndTail(line);
-//            line = Parser.removeHypenate(line);
-//            line = Parser.removeSpecialChar(line);
-//
-//        } finally {
-//            stream.close();
-//        }
-
-//        String line = readFile(this.path.toString());
-//        line = line.toLowerCase();
-//        line = Parser.removeApostrope(line);
-//        line = Parser.removeHeadAndTail(line);
-//        line = Parser.removeHypenate(line);
-//        line = Parser.removeSpecialChar(line);
-        //line = Parser.removePunc(line);
+        
+ 
         //System.out.println(path.toString());
         fileWalker.callback(dateMap, fromMap, toMap, subjectMap, bodyMap, allFieldMap, count);
         return null;
