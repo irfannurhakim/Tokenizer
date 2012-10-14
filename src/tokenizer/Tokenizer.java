@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 public class Tokenizer {
 
     public static long N_messagge = 0; // date, to, from, subject, body, all
-    public static int top_k_token = 40;
+    public static int top_k_token;
     public static String codeName = "irfan_elisafina_pandapotan";
 
     /**
@@ -26,10 +26,17 @@ public class Tokenizer {
      */
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) throws IOException {
-        // TODO code application logic here
-
-        String root = "D:\\Kuliah_S2\\IF6054_Teknologi_Mesin_Pencari\\Tugas\\enron_mail_20110402\\enron_mail_20110402\\maildir\\allen-p";
-        //String root = "/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir/allen-p/_sent_mail/10.";
+        
+        if(args.length != 2){
+            System.out.println("Usage: Tokenizer.jar document_location top_t_token");
+            System.exit(0);
+        }
+        
+        String root = args[0];
+        top_k_token = Integer.valueOf(args[1]);
+        
+        //String root = "/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir";
+        //String root = "/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir/allen-p";
         //String root = "/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir/allen-p/straw/7.";
 
         FileVisitor<Path> fileVisitor = new FileWalker();
