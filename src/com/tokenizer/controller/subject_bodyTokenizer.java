@@ -13,6 +13,9 @@ import java.util.HashMap;
  */
 public class subject_bodyTokenizer {
 
+    private static final String EMAIL_PATTERN =
+            "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     public static HashMap<String, Integer> getListTerm(String data) {
         HashMap<String, Integer> termList = new HashMap<String, Integer>();
         data = Parser.removeHTMLTag(data);
@@ -23,16 +26,17 @@ public class subject_bodyTokenizer {
             if (s.matches("\\W+")) {
                 //System.out.println(s);
             } else {
-                s = Parser.removePunc(s);
+                
                 s = Parser.removeApostrope(s);
                 s = Parser.removeHypenate(s);
+                s = Parser.removePunc(s);
                 //s = Parser.removePuncuation(s);
                 
-                if (Parser.isNeedSplit(s)) {
-                    System.out.println(s);
+                if (Parser.isNeedSplit(s) && !s.matches(EMAIL_PATTERN)) {
+                    //System.out.println(s);
                     String[] slices = Parser.splitSpecialChar(s);
                     for (String slice : slices) {
-                        if (!slice.equals("")) {
+                        if (!slice.equals("\\W+")) {
                             putToHashMap(slice, termList);
                         }
                     }
