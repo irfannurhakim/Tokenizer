@@ -24,10 +24,8 @@ import java.util.concurrent.Callable;
  */
 public class FileReader implements Callable {
 
-    //private FileRecursiveReader fileRecursiveReader;
     private FileWalker fileWalker;
     private File file;
-    //private StringBuilder text = new StringBuilder();
     private Path path;
     private int count;
 
@@ -66,54 +64,74 @@ public class FileReader implements Callable {
 
     @Override
     public Object call() throws IOException, InterruptedException {
-        /*
-         * FileInputStream fis = null; try { fis = new
-         * FileInputStream(this.path.toFile()); FileChannel fileChannel =
-         * fis.getChannel(); ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
-         *
-         * int bytes = fileChannel.read(byteBuffer); while(bytes!=-1){
-         * byteBuffer.flip(); while (byteBuffer.hasRemaining()){
-         * System.out.print((char)byteBuffer.get()); } byteBuffer.clear(); bytes
-         * = fileChannel.read(byteBuffer); } if(fis!=null){ fis.close(); } }
-         * catch (FileNotFoundException e) { e.printStackTrace(); } catch
-         * (IOException e) { e.printStackTrace(); }
-         */
 
         String line = Files.readAllLines(this.path, StandardCharsets.UTF_8).toString().toLowerCase();
-        //System.out.println(line);
-        //line = Parser.removeApostrope(line);
-        //line = Parser.removeHeadAndTail(line);
-        //line = Parser.removeHypenate(line);
-        //line = Parser.removeSpecialChar(line);
 
         /*
          * raw -> array 0 head, array 1 tail
          */
-
         String[] raw = line.split("date: ", 2);
-        
+
         String[] date = raw[1].split("from: ", 2);
         HashMap<String, Integer> dateMap = dateTokenizer.getListDate(date[0]);
         //System.out.println(dateMap);
-        
-        if(date.length == 1) date[1] = "";
-        String[] from = date[1].split("to: ", 2);
-        HashMap<String, Integer> fromMap = FromTokenizer.getListFrom(from[0].replaceAll(", ", ""));
+        if (date.length == 1) {
+            date[1] = "";
+        }
+
+        String[] from;
+        if (date[1].contains("to: ")) {
+            from = date[1].split("to: ", 2);
+        } else {
+            from = date;
+        }
+
+        HashMap<String, Integer> fromMap = FromTokenizer.getListFrom(from[0]);
         //System.out.println(fromMap);
-        if(from.length == 1) from[1] = "";
-        String[] to = from[1].split("subject: ", 2);
+
+        if (from.length == 1) {
+            from[1] = "";
+        }
+
+        String[] to;
+        if (from[1].contains("subject: ")) {
+            to = from[1].split("subject: ", 2);
+        } else {
+            to = from;
+        }
+
         HashMap<String, Integer> toMap = toTokenizer.getListTo(to[0]);
         //System.out.println(toMap);
+        if (to.length == 1) {
+            to[1] = "";
+        }
 
-        if(to.length == 1) to[1] = "";
-        String[] subject = to[1].split("mime-version: ", 2);
+        String[] subject;
+        if (to[1].contains("mime-version : ")) {
+            subject = to[1].split("mime-version: ", 2);
+        } else {
+            subject = to;
+        }
+
         HashMap<String, Integer> subjectMap = subject_bodyTokenizer.getListTerm(subject[0]);
         //System.out.println(subjectMap);
 
-        if(subject.length ==1) subject[1] = "";
-        String[] body = subject[1].split(".*([pP][sS][tT]|[nN][sS][fF]).*", 2);
+        if (subject.length == 1) {
+            subject[1] = "";
+        }
+
+        String[] body;
+        if (subject[1].contains(".pst") || subject[1].contains(".nsf")) {
+            body = subject[1].split("(\\.pst)|(\\.nsf)", 2);
+        } else {
+            body = subject;
+        }
+
+        if (body.length == 1) {
+            body[1] = "";
+        }
         HashMap<String, Integer> bodyMap = subject_bodyTokenizer.getListTerm(body[1]);
-        //HashMap<String, Integer> bodyMap = new HashMap<String, Integer>();        
+        //System.out.println(bodyMap);
 
         HashMap<String, Integer> allFieldMap = AllFieldTokenizer.allFieldTermList(dateMap, toMap, fromMap, subjectMap, bodyMap);
         //System.out.println(allFieldMap);
@@ -121,7 +139,7 @@ public class FileReader implements Callable {
         /*
          * split head
          */
-       // String[] head = raw[0].split("from");
+        // String[] head = raw[0].split("from");
         /*
          * split tail
          */
@@ -173,28 +191,8 @@ public class FileReader implements Callable {
 //        line = Parser.removeHypenate(line);
 //        line = Parser.removeSpecialChar(line);
         //line = Parser.removePunc(line);
-        //fileWalker.callback(email.getDate(), email.getFrom(),new String[]{"test"} , new String[]{"test"},count);
-        fileWalker.callback(path.toString(), "", raw, new String[]{"test"}, count);
-        //fileWalker.callback(head[0].split("date")[1], head[1].split("\\s"), tail[0].split("\\s"), tail[1].split("\\s"), count);
+        //System.out.println(path.toString());
+        fileWalker.callback(dateMap, fromMap, toMap, subjectMap, bodyMap, allFieldMap, count);
         return null;
-    }
-
-    private String readFile(String file) throws IOException {
-        BufferedReader reader = new BufferedReader(new java.io.FileReader(file));
-        String line = null;
-        StringBuilder stringBuilder = new StringBuilder();
-        //String ls = System.getProperty("line.separator");
-
-        while ((line = reader.readLine()) != null) {
-            stringBuilder.append(line);
-            //stringBuilder.append(ls);
-        }
-        //reader.close();
-        return stringBuilder.toString();
-    }
-
-    public void setProperty(Path aFile, int i) {
-        this.path = aFile;
-        this.count = i;
     }
 }

@@ -5,7 +5,6 @@
 package com.tokenizer.controller;
 
 import com.tokenizer.util.Parser;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -26,6 +25,7 @@ public class subject_bodyTokenizer {
             } else {
                 s = Parser.removeApostrope(s);
                 s = Parser.removeHypenate(s);
+                s = Parser.removePuncuation(s);
                 if (Parser.isNeedSplit(s)) {
                     String[] slices = Parser.splitSpecialChar(s);
                     for (String slice : slices) {

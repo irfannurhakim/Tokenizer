@@ -21,23 +21,24 @@ import java.util.concurrent.TimeUnit;
  * @author irfannurhakim
  */
 public class FileWalker extends SimpleFileVisitor<Path> {
+
     int nrOfProcessors = Runtime.getRuntime().availableProcessors();
-    private ExecutorService es = Executors.newFixedThreadPool(nrOfProcessors);
+    private ExecutorService es = Executors.newFixedThreadPool(50);
     private Map<String, Integer> fromList = new HashMap<String, Integer>();
     private Runtime rt = Runtime.getRuntime();
     private int i = 0, j = 1;
     long startTime;
-    
-    public FileWalker(){
+
+    public FileWalker() {
         startTime = System.nanoTime();
     }
-    
+
     @Override
     public FileVisitResult visitFile(
             Path aFile, BasicFileAttributes aAttrs) throws IOException {
-        
+
         if (!aFile.getFileName().toString().equalsIgnoreCase(".DS_Store")) {
-            
+
             if (i % 1000 == 0) {
                 System.out.println("job send " + i);
             }
@@ -48,7 +49,7 @@ public class FileWalker extends SimpleFileVisitor<Path> {
         }
         return FileVisitResult.CONTINUE;
     }
-    
+
     @Override
     public FileVisitResult preVisitDirectory(
             Path aDir, BasicFileAttributes aAttrs) throws IOException {
@@ -57,38 +58,28 @@ public class FileWalker extends SimpleFileVisitor<Path> {
         }
         return FileVisitResult.CONTINUE;
     }
-    
-    public void callback(String date, String from, String[] to, String[] body, int jobDone) throws InterruptedException {
-        //j++;
-        /*
-         * if (!from.matches("")) { Integer freq = (Integer) fromList.get(from);
-         * if (freq == null) { freq = new Integer(1); } else { int value =
-         * freq.intValue(); freq = new Integer(value + 1); } fromList.put(from,
-         * freq); }
-         */
-        if(to.length ==1)
-            System.out.println(date);
-        
+
+    public void callback(HashMap<String, Integer> date, HashMap<String, Integer> from, HashMap<String, Integer> to, HashMap<String, Integer> subject, HashMap<String, Integer> body, HashMap<String, Integer> allFieldMap, int jobDone) throws InterruptedException {
+                
         if (jobDone % 1000 == 0) {
-            System.out.println("job done " + jobDone + " from: " + i + " in : " + ((System.nanoTime() - startTime) / 1000000000.0) + "sec");
+            System.out.println("<==> job done " + jobDone + " from: " + i + " in : " + ((System.nanoTime() - startTime) / 1000000000.0) + "sec");
             rt.gc();
             rt.gc();
         }
-        
+
         if (jobDone >= i) {
-            es.shutdown();
+            //es.shutdown();
             es.awaitTermination((long) 1000, TimeUnit.MILLISECONDS);
-            
-            
-            //ValueComparator c = new ValueComparator(fromList);
-            //TreeMap<String, Integer> sorted_map = new TreeMap<String, Integer>(c);
-            //sorted_map.putAll(fromList);
-            //System.out.println(sorted_map);
+
+            ValueComparator c = new ValueComparator(fromList);
+            TreeMap<String, Integer> sorted_map = new TreeMap<String, Integer>(c);
+            sorted_map.putAll(fromList);
+            System.out.println(sorted_map);
             System.exit(0);
         }
-        
+
     }
-    
+
     public Map<String, Integer> getFromList() {
         return fromList;
     }

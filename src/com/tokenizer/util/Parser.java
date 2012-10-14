@@ -40,9 +40,9 @@ public class Parser {
 //        return s.replaceAll("[,!;:?%=_&#/\\\\^\\+\\*\\{\\}\\$\\|\\-<>\\[\\]\\(\\)\"]+", "");
 //    }
 
-    /*public static String removePunc(String s) {
+    public static String removePuncuation(String s) {
         return s.replaceAll("\\p{Punct}", " ");
-    }*/
+    }
     
     public static String removeHTMLTag(String allString){
         // menghapus semua html tag beserta atribut2nya

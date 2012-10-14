@@ -18,7 +18,7 @@ import java.util.StringTokenizer;
 public class FinaMainTest {
     
     public static void main(String[] args) {
-        
+        String a = "";
 //        String a="UBS? have,organized an important.meeting  }will be held tomorrow for all employees who "
 //                + ": 1) have accepted offers or 2) intend to accept offers ( to the best of their "
 //                + "knowledge) but who?have issues that are being!resolved All employees in these 12:33:34 "
@@ -63,7 +63,8 @@ public class FinaMainTest {
 //        
 //        
 //        System.out.println(as);
-        System.out.println("\"" + System.getProperty("line.separator") + "\"");
+        
+        System.out.println(a.replaceAll(", ", ""));
         
         /*String test2="<div id=\"related-results\">     <h2>         More Results searching for &#8220;<span class=\"search-term\">html tag regex</span>&#8221;         <a href=\"#related-results\" class=\"close\"></a>      </h2>      <div class=\"content\">          <p>             It looks like you found this post via a search engine result.<br />             Here are a few other posts you might find interesting:          </p> 			    <ul class=\"morelist\"> 			        <li class=\"morelistitem\"> 				        <a id=\"ctl07_Links_ctl01_Link\" href=\"/archive/2005/04/22/Matching_HTML_With_Regex.aspx\" target=\"_blank\">Matching HTML With Regular Expressions Redux</a> 				        <a id=\"ctl07_Links_ctl01_EditReadingLink\" href=\"javascript:__doPostBack(&#39;ctl07$Links$ctl01$EditReadingLink&#39;,&#39;&#39;)\"></a> 		            </li> 			        <li class=\"morelistitem\"> 				        <a id=\"ctl07_Links_ctl02_Link\" href=\"/archive/2007/08/13/speed-up-your-pages-and-improve-your-yslow-score-with.aspx\" target=\"_blank\">Speed Up Your Pages And Improve Your YSlow Score With The Coral Content Distribution Network</a> 				        <a id=\"ctl07_Links_ctl02_EditReadingLink\" href=\"javascript:__doPostBack(&#39;ctl07$Links$ctl02$EditReadingLink&#39;,&#39;&#39;)\"></a> 		            </li> 			    </ul> 			    <a href=\"/search.aspx?q=html%20tag%20regex\" id=\"ctl07_Links_ctl03_searchMore\" class=\"more-results\">Click for all Search Results for html tag regex</a> 	</div>";
         //test2.replaceAll("\\t", "");
