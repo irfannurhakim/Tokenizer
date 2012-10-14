@@ -6,7 +6,6 @@ package com.tokenizer.util;
 
 import com.tokenizer.controller.*;
 import com.tokenizer.model.BigConcurentHashMap;
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -21,36 +20,18 @@ import java.util.concurrent.Callable;
 public class FileReader implements Callable {
 
     private FileWalker fileWalker;
-    private File file;
     private Path path;
     private int count;
 
     public FileReader(){
-        
     }
     
-    public FileReader(File file) {
-        this.file = file;
-    }
-
+    
     public FileReader(Path path, int count) {
         this.path = path;
         this.count = count;
     }
-
-    public File getFile() {
-        return file;
-    }
-
-    public void setFile(File file) {
-        this.file = file;
-    }
-    /*
-     * public StringBuilder getText() { return text; }
-     *
-     * public void setText(StringBuilder text) { this.text = text; }
-     */
-
+   
     public void setCaller(FileWalker fileWalker) {
         this.fileWalker = fileWalker;
     }
@@ -60,12 +41,11 @@ public class FileReader implements Callable {
     }
 
     @Override
-    public Object call() throws IOException, InterruptedException {
+    public Boolean call() throws IOException, InterruptedException {
 
         String line = Files.readAllLines(this.path, StandardCharsets.UTF_8).toString().toLowerCase().replaceAll("x-to|x-from", "");
         //System.out.println(line);
      
-        
         /*
          * raw -> array 0 head, array 1 tail
          */
@@ -92,7 +72,7 @@ public class FileReader implements Callable {
             from = date;
         }        
         
-        HashMap <String,Integer> fromMap = FromTokenizer.getListFrom(from[0].replaceAll(", ", ""));
+        HashMap <String,Integer> fromMap = FromTokenizer.getListFrom(from[0].replaceAll(", ", " "));
         
         synchronized(BigConcurentHashMap.fromConcurentMap )
         {
@@ -123,7 +103,7 @@ public class FileReader implements Callable {
         }
 
         String[] subject;
-        if (to[1].contains("mime-version : ")) {
+        if (to[1].contains("mime-version: ")) {
             subject = to[1].split("mime-version: ", 2);
         } else {
             subject = to;
@@ -172,6 +152,6 @@ public class FileReader implements Callable {
  
         //System.out.println(path.toString());
         fileWalker.callback(dateMap, fromMap, toMap, subjectMap, bodyMap, allFieldMap, count);
-        return null;
+        return true;
     }
 }
