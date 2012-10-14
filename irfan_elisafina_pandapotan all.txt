@@ -1,43 +1,43 @@
 irfan_elisafina_pandapotan all N 2406
-irfan_elisafina_pandapotan all TO 144308
-irfan_elisafina_pandapotan all UT 20762
+irfan_elisafina_pandapotan all TO 144254
+irfan_elisafina_pandapotan all UT 20604
 irfan_elisafina_pandapotan all 1 ect 8296 665 4.433959795665119
 irfan_elisafina_pandapotan all 2 hou 4828 655 2.610823595520436
 irfan_elisafina_pandapotan all 3 09 2924 294 2.554721804558993
 irfan_elisafina_pandapotan all 4 image 1724 124 2.12486176497199
 irfan_elisafina_pandapotan all 5 ees 1462 82 2.0532420661817468
-irfan_elisafina_pandapotan all 6 of 6281 1263 1.6824407055904154
-irfan_elisafina_pandapotan all 7 the 16573 1887 1.6736756612116974
-irfan_elisafina_pandapotan all 8 enron 11622 1726 1.6044689057714543
-irfan_elisafina_pandapotan all 9 and 7301 1418 1.6043938076143258
+irfan_elisafina_pandapotan all 6 of 6280 1263 1.6821728436726333
+irfan_elisafina_pandapotan all 7 the 16568 1887 1.6731707207479276
+irfan_elisafina_pandapotan all 8 enron 11616 1726 1.6036405790260897
+irfan_elisafina_pandapotan all 9 and 7296 1418 1.603295058259707
 irfan_elisafina_pandapotan all 10 00 1821 307 1.5582743159739254
-irfan_elisafina_pandapotan all 11 a 5984 1395 1.3556550600326194
+irfan_elisafina_pandapotan all 11 a 5983 1395 1.3554285133982558
 irfan_elisafina_pandapotan all 12 na 1085 153 1.2425112335948774
-irfan_elisafina_pandapotan all 13 in 4275 1217 1.211031103559368
+irfan_elisafina_pandapotan all 13 in 4274 1217 1.2107478214298804
 irfan_elisafina_pandapotan all 14 enronxgate 769 55 1.207639297585767
-irfan_elisafina_pandapotan all 15 2001 2354 713 1.1899533361543029
+irfan_elisafina_pandapotan all 15 2001 2352 713 1.1889423307709943
 irfan_elisafina_pandapotan all 16 20 1207 238 1.1605712464654288
 irfan_elisafina_pandapotan all 17 i 3896 1204 1.1210574357914305
 irfan_elisafina_pandapotan all 18 corp 1309 309 1.1166105245655338
-irfan_elisafina_pandapotan all 19 to 12277 1934 1.1142945063761593
+irfan_elisafina_pandapotan all 19 to 12272 1934 1.1138406925346767
 irfan_elisafina_pandapotan all 20 3d 415 5 1.0653189685792674
-irfan_elisafina_pandapotan all 21 that 2525 897 1.0354651754162367
+irfan_elisafina_pandapotan all 21 that 2524 897 1.0350550901982503
 irfan_elisafina_pandapotan all 22 1 1639 534 1.0254479506918077
-irfan_elisafina_pandapotan all 23 for 4617 1411 1.0240815808794337
-irfan_elisafina_pandapotan all 24 at 2292 825 1.0196232640807439
+irfan_elisafina_pandapotan all 23 for 4610 1411 1.0225289339082064
+irfan_elisafina_pandapotan all 24 at 2290 825 1.0187335404646176
 irfan_elisafina_pandapotan all 25 your 2201 813 0.9925446887605888
 irfan_elisafina_pandapotan all 26 you 4981 1498 0.980952120686037
 irfan_elisafina_pandapotan all 27 we 2053 771 0.9710643265420066
 irfan_elisafina_pandapotan all 28 0 806 137 0.9600109793804815
 irfan_elisafina_pandapotan all 29 this 3138 1157 0.9548795350756001
-irfan_elisafina_pandapotan all 30 be 2544 978 0.9518442893663794
-irfan_elisafina_pandapotan all 31 2000 1413 476 0.9515744799561211
-irfan_elisafina_pandapotan all 32 is 3973 1354 0.9493297615490153
+irfan_elisafina_pandapotan all 30 2000 1413 476 0.9515744799561211
+irfan_elisafina_pandapotan all 31 be 2539 978 0.9499735262190397
+irfan_elisafina_pandapotan all 32 is 3967 1354 0.9478960896211789
 irfan_elisafina_pandapotan all 33 as 1994 767 0.9474683232600715
 irfan_elisafina_pandapotan all 34 zdnet 480 22 0.9365942031274431
-irfan_elisafina_pandapotan all 35 on 4408 1452 0.9252470800784218
-irfan_elisafina_pandapotan all 36 from 2592 1037 0.9066976392713263
-irfan_elisafina_pandapotan all 37 will 2234 913 0.8997142666704866
-irfan_elisafina_pandapotan all 38 or 1914 781 0.895066067819664
+irfan_elisafina_pandapotan all 35 on 4407 1452 0.9250371782907453
+irfan_elisafina_pandapotan all 36 from 2590 1037 0.9059980268953454
+irfan_elisafina_pandapotan all 37 will 2232 913 0.8989087928417753
+irfan_elisafina_pandapotan all 38 or 1912 781 0.8941307845722035
 irfan_elisafina_pandapotan all 39 buy 657 101 0.8657873854773651
 irfan_elisafina_pandapotan all 40 10 1444 572 0.8621879763273355

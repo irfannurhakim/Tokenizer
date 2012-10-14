@@ -21,12 +21,16 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class FinaMainTest {
     
+    private static final String EMAIL_PATTERN = 
+		"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+		+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    
     public static void main(String[] args) {
         
-       /* String a="UBS? have,organized an important.meeting  }will be held tomorrow for all employees who "
+        String a="UBS? have,organized an important.meeting  }will be held tomorrow for all employees who "
                 + ": 1) have accepted offers or 2) intend to accept offers ( to the best of their "
                 + "knowledge) but who?have issues that are being!resolved All employees in these 12:33:34 "
-                + "not get this message in time Tammie's Schopp mother-in-law  100-20-1233 10am-1pm rono.budi susi,shinta ";
+                + "not get this message@tes.com in time Tammie's Schopp mother-in-law  100-20-1233 10am-1pm rono.budi susi,shinta ";
         
         a= a.toLowerCase();
         String [] ax = a.split("\\s+");
@@ -34,37 +38,37 @@ public class FinaMainTest {
         
         for (String s : ax) {
             
-            if(s.matches("\\W") || s.matches("\\s*") )
+            if(s.matches(EMAIL_PATTERN) || s.matches("\\s*") )
             {
-                //System.out.println(s);
+                System.out.println(s);
                 
             }
-            else
-            {
-                //s= removeHeadAndTail(s);
-                s= removeApostrope(s);
-                s= removeHypenate(s);
-                //s= removeSpecialChar(s);
-                if (isNeedSplit(s))
-                {
-                    String [] asd =splitSpecialChar(s);
-                    for (String asdx : asd) {
-                        if(!asdx.equals(""))
-                        {
-                        as.add(asdx);
-                        }
-                    }
-                }
-                else
-                {
-                    as.add(s);
-                }
-                
-            }
+//            else
+//            {
+//                //s= removeHeadAndTail(s);
+//                s= removeApostrope(s);
+//                s= removeHypenate(s);
+//                //s= removeSpecialChar(s);
+//                if (isNeedSplit(s))
+//                {
+//                    String [] asd =splitSpecialChar(s);
+//                    for (String asdx : asd) {
+//                        if(!asdx.equals(""))
+//                        {
+//                        as.add(asdx);
+//                        }
+//                    }
+//                }
+//                else
+//                {
+//                    as.add(s);
+//                }
+//                
+//            }
         
         }
         
-        System.out.println(System.getProperty("line.separator"));*/
+        //System.out.println(System.getProperty("line.separator"));*/
         
         //System.out.println(as);
         
@@ -79,15 +83,15 @@ public class FinaMainTest {
         //System.out.println(coba[0]);
         System.out.println(coba[1]);*/
         
-       ConcurrentHashMap<String, TermCounter> asd = new ConcurrentHashMap<String, TermCounter>();
-       asd.put("a", new TermCounter(40, 2, 0));
-       asd.put("b", new TermCounter(20, 2, 0));
-       asd.put("c", new TermCounter(10, 3, 0));
-       asd.put("d", new TermCounter(5, 1, 0));
-       asd.put("e", new TermCounter(30, 2, 0));
-       
-      LinkedHashMap asdf= BigConcurentHashMap.calculateTermWight(asd, 7);
-        System.out.println(asdf);
+//       ConcurrentHashMap<String, TermCounter> asd = new ConcurrentHashMap<String, TermCounter>();
+//       asd.put("a", new TermCounter(40, 2, 0));
+//       asd.put("b", new TermCounter(20, 2, 0));
+//       asd.put("c", new TermCounter(10, 3, 0));
+//       asd.put("d", new TermCounter(5, 1, 0));
+//       asd.put("e", new TermCounter(30, 2, 0));
+//       
+//      LinkedHashMap asdf= BigConcurentHashMap.calculateTermWight(asd, 7);
+//        System.out.println(asdf);
 	    
     }
     public static boolean isNeedSplit(String partString)

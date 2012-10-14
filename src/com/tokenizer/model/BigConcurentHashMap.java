@@ -109,14 +109,14 @@ public class BigConcurentHashMap {
                 Map.Entry me = (Map.Entry) it.next();
                 String newKey = (String) me.getKey();
                 TermCounter newval = (TermCounter) me.getValue();
-                temp+=Tokenizer.codeName+" "+field+" "+i+" "+newKey+" "+newval.getTotalTerm()+" "+newval.getTotalDocument()+" "+newval.getTokenWeight()+"\n";
+                temp+=Tokenizer.codeName+" "+field+" "+i+" "+newKey+" "+newval.getTotalTerm()+" "+newval.getTotalDocument()+" "+newval.getTokenWeight()+"\r\n";
                 i++;
                 totAllTerm+=newval.getTotalTerm();
             
             }
-            String hasil = Tokenizer.codeName+" "+field+" N "+totalMessage+"\n";
-            hasil+=Tokenizer.codeName+" "+field+" TO "+totAllTerm+"\n";
-            hasil+=Tokenizer.codeName+" "+field+" UT "+termList.size()+"\n";
+            String hasil = Tokenizer.codeName+" "+field+" N "+totalMessage+"\r\n";
+            hasil+=Tokenizer.codeName+" "+field+" TO "+totAllTerm+"\r\n";
+            hasil+=Tokenizer.codeName+" "+field+" UT "+termList.size()+"\r\n";
             hasil+=temp;
             
             writeToFile(Tokenizer.codeName+" "+field+".txt", hasil);

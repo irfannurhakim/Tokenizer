@@ -11,13 +11,17 @@ import java.util.HashMap;
  * @author user
  */
 public class toTokenizer {
+    
+    private static final String EMAIL_PATTERN = 
+		"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+		+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
     public static HashMap<String, Integer> getListTo(String to) {
         HashMap<String, Integer> termList = new HashMap<String, Integer>();
         String[] terms = to.split(",|(\\s)+|<|> ");
         for (int i = 0; i < terms.length; i++) {
             String key = terms[i];
-            if (!key.matches("")) {
+            if (key.matches(EMAIL_PATTERN) && !key.matches("")) {
                 Integer freq = (Integer) termList.get(key);
                 if (freq == null) {
                     freq = new Integer(1);
