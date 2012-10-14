@@ -92,7 +92,7 @@ public class FileReader implements Callable {
             from = date;
         }        
         
-        HashMap <String,Integer> fromMap = FromTokenizer.getListFrom(from[0].replaceAll(", ", ""));
+        HashMap <String,Integer> fromMap = FromTokenizer.getListFrom(from[0].replaceAll(", ", " "));
         
         synchronized(BigConcurentHashMap.fromConcurentMap )
         {
@@ -123,7 +123,7 @@ public class FileReader implements Callable {
         }
 
         String[] subject;
-        if (to[1].contains("mime-version : ")) {
+        if (to[1].contains("mime-version: ")) {
             subject = to[1].split("mime-version: ", 2);
         } else {
             subject = to;
