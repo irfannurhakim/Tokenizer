@@ -1,5 +1,5 @@
 irfan_elisafina_pandapotan date N 2406
-irfan_elisafina_pandapotan date TO 7881
+irfan_elisafina_pandapotan date TO 8029
 irfan_elisafina_pandapotan date UT 1544
 irfan_elisafina_pandapotan date 1 (pdt) 1193 1193 0.3478316325864475
 irfan_elisafina_pandapotan date 2 -0700 1193 1193 0.3478316325864475
@@ -41,3 +41,13 @@ irfan_elisafina_pandapotan date 37 20feb2001 17 17 0.0349927798803545
 irfan_elisafina_pandapotan date 38 17oct2001 17 17 0.0349927798803545
 irfan_elisafina_pandapotan date 39 29mar2001 17 17 0.0349927798803545
 irfan_elisafina_pandapotan date 40 07:01:00 17 17 0.0349927798803545
+irfan_elisafina_pandapotan date 41 05:26:00 16 16 0.033337537318668946
+irfan_elisafina_pandapotan date 42 15mar2001 16 16 0.033337537318668946
+irfan_elisafina_pandapotan date 43 19nov2001 16 16 0.033337537318668946
+irfan_elisafina_pandapotan date 44 05:27:00 15 15 0.031656301093718295
+irfan_elisafina_pandapotan date 45 19dec2001 15 15 0.031656301093718295
+irfan_elisafina_pandapotan date 46 6feb2001 14 14 0.029947335800860817
+irfan_elisafina_pandapotan date 47 25jan2001 14 14 0.029947335800860817
+irfan_elisafina_pandapotan date 48 14dec2000 14 14 0.029947335800860817
+irfan_elisafina_pandapotan date 49 30apr2001 14 14 0.029947335800860817
+irfan_elisafina_pandapotan date 50 19oct2001 14 14 0.029947335800860817
