@@ -30,7 +30,7 @@ public class Parser {
     }
 
     public static String removeHypenate(String s) {
-        if (s.matches("([a-zA-Z]*-)*[a-zA-Z]*")) {
+        if (s.matches(".*([a-zA-Z]+-)*[a-zA-Z]+.*")) {
             s = s.replaceAll("-", "");
         }
         return s;
@@ -52,7 +52,7 @@ public class Parser {
     public static boolean isNeedSplit(String partString)
     {
         // mengembalikan nilai apakah suatu string perlu dipotong, misalkan tono.budi , tolong!saya dst.
-        return (partString.matches("(\\w*\\W)*\\w*"));
+        return (partString.matches("([a-zA-Z]*\\W+)+[a-zA-Z]*"));
     }
     public static String[] splitSpecialChar(String partString)
     {

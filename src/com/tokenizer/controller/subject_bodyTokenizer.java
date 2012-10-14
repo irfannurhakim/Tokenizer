@@ -16,17 +16,20 @@ public class subject_bodyTokenizer {
     public static HashMap<String, Integer> getListTerm(String data) {
         HashMap<String, Integer> termList = new HashMap<String, Integer>();
         data = Parser.removeHTMLTag(data);
-        String[] ax = data.split("\\s+");
+        String[] ax = data.split("\\s+|, ");
 
         for (String s : ax) {
 
-            if (s.matches("\\W") || s.matches("\\s*")) {
+            if (s.matches("\\W+")) {
                 //System.out.println(s);
             } else {
+                s = Parser.removePunc(s);
                 s = Parser.removeApostrope(s);
                 s = Parser.removeHypenate(s);
-                s = Parser.removePuncuation(s);
+                //s = Parser.removePuncuation(s);
+                
                 if (Parser.isNeedSplit(s)) {
+                    System.out.println(s);
                     String[] slices = Parser.splitSpecialChar(s);
                     for (String slice : slices) {
                         if (!slice.equals("")) {
