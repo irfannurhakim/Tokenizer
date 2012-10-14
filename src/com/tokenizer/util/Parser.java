@@ -4,17 +4,13 @@
  */
 package com.tokenizer.util;
 
+import java.util.regex.Pattern;
+
 /**
  *
  * @author irfannurhakim
  */
 public class Parser {
-
-    public static String[] slice(String collection) {
-        return collection.replaceAll("[,!;:?%'=_&#~/\\\\^\\+\\*\\{\\}\\$\\|\\-<>\\[\\]\\(\\)\"]+", "").split("\\s");
-
-        //return collection.split("\\s");
-    }
 
     public static int findIdx(String collection, String keyword) {
         return collection.indexOf(keyword);
@@ -26,33 +22,32 @@ public class Parser {
     }
 
     public static String removeApostrope(String s) {
-        return s.replaceAll("'s", "").replaceAll("'", "");
+        s =Pattern.compile("'s").matcher(s).replaceAll("");
+        s =Pattern.compile("'").matcher(s).replaceAll("");
+        return s;
     }
 
     public static String removeHypenate(String s) {
-        if (s.matches("([a-zA-Z]*-)*[a-zA-Z]*")) {
+        if (s.matches(".*([a-zA-Z]+-)*[a-zA-Z]+.*")) {
             s = s.replaceAll("-", "");
         }
         return s;
     }
 
-//    public static String removeSpecialChar(String s) {
-//        return s.replaceAll("[,!;:?%=_&#/\\\\^\\+\\*\\{\\}\\$\\|\\-<>\\[\\]\\(\\)\"]+", "");
-//    }
-
     public static String removePuncuation(String s) {
-        return s.replaceAll("\\p{Punct}", " ");
+        return (Pattern.compile("\\p{Punct}").matcher(s).replaceAll(" "));
+        //return s.replaceAll("\\p{Punct}", " ");
     }
     
     public static String removeHTMLTag(String allString){
         // menghapus semua html tag beserta atribut2nya
-        return (allString.replaceAll("<(\"[^\"]*\"|'[^']*'|[^'\">])*>", "")); 
+        return (Pattern.compile("<(\"[^\"]*\"|'[^']*'|[^'\">])*>").matcher(allString).replaceAll(""));
     }
     
     public static boolean isNeedSplit(String partString)
     {
         // mengembalikan nilai apakah suatu string perlu dipotong, misalkan tono.budi , tolong!saya dst.
-        return (partString.matches("(\\w*\\W)*\\w*"));
+        return (partString.matches("([a-zA-Z]*\\W+)+[a-zA-Z]*"));
     }
     public static String[] splitSpecialChar(String partString)
     {

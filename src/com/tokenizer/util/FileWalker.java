@@ -15,7 +15,6 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -27,12 +26,11 @@ import tokenizer.Tokenizer;
  */
 public class FileWalker extends SimpleFileVisitor<Path> {
 
-    int nrOfProcessors = Runtime.getRuntime().availableProcessors();
+    private static long startTime;
+    private int nrOfProcessors = Runtime.getRuntime().availableProcessors();
     private ExecutorService es = Executors.newFixedThreadPool(nrOfProcessors);
-    private Map<String, Integer> fromList = new HashMap<String, Integer>();
     private Runtime rt = Runtime.getRuntime();
-    private int i = 0, j = 1;
-    long startTime;
+    private int i = 0;
 
     public FileWalker() {
         startTime = System.nanoTime();
@@ -67,7 +65,7 @@ public class FileWalker extends SimpleFileVisitor<Path> {
     public void callback(HashMap<String, Integer> date, HashMap<String, Integer> from, HashMap<String, Integer> to, HashMap<String, Integer> subject, HashMap<String, Integer> body, HashMap<String, Integer> allFieldMap, int jobDone) throws InterruptedException {
 
         if (jobDone % 1000 == 0) {
-            System.out.println("<==> job done " + jobDone + " from: " + i + " in : " + ((System.nanoTime() - startTime) / 1000000000.0) + "sec");
+            System.out.println("<==> job done " + jobDone + " from: " + i + " in : " + ((System.nanoTime() - startTime) / 1000000000.0) + " secs");
             rt.gc();
             rt.gc();
         }
@@ -76,10 +74,6 @@ public class FileWalker extends SimpleFileVisitor<Path> {
             es.shutdown();
             es.awaitTermination((long) 100, TimeUnit.MILLISECONDS);
 
-            //ValueComparator c = new ValueComparator(fromList);
-            //TreeMap<String, Integer> sorted_map = new TreeMap<String, Integer>(c);
-            //sorted_map.putAll(fromList);
-            //System.out.println(sorted_map);
             Tokenizer.N_messagge = i;
             try {
                 LinkedHashMap dateList = BigConcurentHashMap.calculateTermWight(BigConcurentHashMap.dateConcurentMap, Tokenizer.N_messagge);
@@ -100,10 +94,6 @@ public class FileWalker extends SimpleFileVisitor<Path> {
             System.exit(0);
         }
 
-    }
-
-    public Map<String, Integer> getFromList() {
-        return fromList;
     }
 
     public void writeToFile(String fileName, String text) {
