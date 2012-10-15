@@ -4,8 +4,6 @@
  */
 package com.tokenizer.model;
 
-import java.util.Comparator;
-
 /**
  *
  * @author user

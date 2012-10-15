@@ -6,8 +6,6 @@
 package com.tokenizer.util;
 
 import com.tokenizer.model.BigConcurentHashMap;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Path;
