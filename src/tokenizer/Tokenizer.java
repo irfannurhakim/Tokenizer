@@ -29,13 +29,13 @@ public class Tokenizer {
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) throws IOException {
         
-        //if(args.length != 2){
-          //  System.out.println("Usage: Tokenizer.jar document_location top_t_token");
-           // System.exit(0);
-        //}
+        if(args.length != 2){
+            System.out.println("Usage: Tokenizer.jar document_location top_t_token");
+            System.exit(0);
+        }
         
-        //String root = args[0];
-        top_k_token = 40;
+        String root = args[0];
+        top_k_token = Integer.parseInt(args[1]);
         
         String root = "/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir";
         //String root = "/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir/allen-p/_sent_mail/10.";

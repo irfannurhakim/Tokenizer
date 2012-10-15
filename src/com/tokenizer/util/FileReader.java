@@ -107,6 +107,10 @@ public class FileReader implements Callable {
             to[1] = "";
         }
         
+        if(to[1].contains("cc: "))
+        {
+            to[1]= to[1].split("cc: ",2)[0];
+        }
         if(to[1] == null){
             to[1] = "";
         }
