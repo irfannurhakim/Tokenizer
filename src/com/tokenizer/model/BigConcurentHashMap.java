@@ -23,6 +23,14 @@ public class BigConcurentHashMap {
     public static ConcurrentHashMap<String, TermCounter> bodyConcurentMap = new ConcurrentHashMap<String, TermCounter>();
     public static ConcurrentHashMap<String, TermCounter> allConcurentMap = new ConcurrentHashMap<String, TermCounter>();
 
+    /**
+     * author: Pandapotan
+     * untuk menggabungkan hashmap-hashmap kecil yang didapat dari masing-masing file 
+     * menjadi suatu concurent hashmap besar yang berisi seluruh term, tf, td, bobot term
+     * dari semua file untuk field tertentu.
+     * @param a hashmap besar
+     * @param b hashmap per file
+     */
     public static void mergeBigHashMap(ConcurrentHashMap<String, TermCounter> a, HashMap<String, Integer> b) {
         // Get a set of the entries 
 
@@ -47,6 +55,13 @@ public class BigConcurentHashMap {
         }
     }
 
+    /**
+     * author: Pandapotan
+     * untuk menghitung bobot dari suatu term
+     * @param a
+     * @param N_document
+     * @return
+     */
     public static LinkedHashMap<String, TermCounter> calculateTermWight(ConcurrentHashMap<String, TermCounter> a, long N_document) {
         Set set = a.entrySet();
         Iterator i = set.iterator();
@@ -64,11 +79,16 @@ public class BigConcurentHashMap {
         return (hasil);
     }
 
-    private static Map sortByComparator(Map unsortMap) {
+    /**
+     * author : Elisafina
+     * untuk mengurutkan isi map berdasarkan bobot term nya
+     * @param unsortMap
+     * @return
+     */
+    public static Map sortByComparator(Map unsortMap) {
 
         List list = new LinkedList(unsortMap.entrySet());
 
-        //sort list based on comparator
         Collections.sort(list, new Comparator() {
             public int compare(Object o1, Object o2) {
 
@@ -76,18 +96,11 @@ public class BigConcurentHashMap {
                 Map.Entry e2 =(Map.Entry) o2;
                 TermCounter t1 = (TermCounter) e1.getValue();
                 TermCounter t2 = (TermCounter) e2.getValue();
-//                if (t1.getTokenWeight() >= t2.getTokenWeight()) {
-//                    return -1;
-//                } else {
-//                    return 1;
-//                }
                 return (Double.compare(t2.getTokenWeight(), t1.getTokenWeight()));
                 
             }
         });
         
-
-        //put sorted list into map again
         Map sortedMap = new LinkedHashMap();
         for (Iterator it = list.iterator(); it.hasNext();) {
             Map.Entry entry = (Map.Entry) it.next();
@@ -97,6 +110,13 @@ public class BigConcurentHashMap {
         return sortedMap;
     }
     
+    /**
+     * author: Pandapotan
+     * untuk menuliskan term statistic suatu field ke dalam file
+     * @param termList
+     * @param field
+     * @param totalMessage
+     */
     public static void printStatistic (LinkedHashMap termList, String field, long totalMessage)
     {
         System.out.println(field);
@@ -122,7 +142,13 @@ public class BigConcurentHashMap {
             writeToFile(Tokenizer.codeName+" "+field+".txt", hasil);
     }
     
-     public static void writeToFile(String fileName, String text) {
+     /**
+     * author: Pandapotan
+     * method menulis suatu string ke dalam file txt
+     * @param fileName
+     * @param text
+     */
+    public static void writeToFile(String fileName, String text) {
         try {
             // Create file 
             System.out.println(fileName);

@@ -36,16 +36,31 @@ public class FileWalker extends SimpleFileVisitor<Path> {
         startTime = System.nanoTime();
     }
 
+    /**
+     * Visit each files in directory and after that submit a job to worker to
+     * read the file.
+     *
+     * @param aFile
+     * @param aAttrs
+     * @return enumerator
+     * @throws IOException
+     */
     @Override
     public FileVisitResult visitFile(
             Path aFile, BasicFileAttributes aAttrs) throws IOException {
-
+        /**
+         * skip .DS_Store file
+         * Print every 1000 jobs send to worker
+         */
         if (!aFile.getFileName().toString().equalsIgnoreCase(".DS_Store")) {
-
             if (i % 1000 == 0) {
                 System.out.println("job send " + i);
             }
             i++;
+            /**
+             * Instantiate the worker
+             * send job to worker with parameter directory file and job counter
+             */
             FileReader task = new FileReader(aFile, i);
             task.setCaller(this);
             es.submit(task);
@@ -53,6 +68,16 @@ public class FileWalker extends SimpleFileVisitor<Path> {
         return FileVisitResult.CONTINUE;
     }
 
+    /**
+     * This method visit all directory, after end with a file then return
+     * enumeration with CONTINUE value to read the file skip for all_documents
+     * folder
+     *
+     * @param aDir
+     * @param aAttrs
+     * @return
+     * @throws IOException
+     */
     @Override
     public FileVisitResult preVisitDirectory(
             Path aDir, BasicFileAttributes aAttrs) throws IOException {
@@ -62,18 +87,42 @@ public class FileWalker extends SimpleFileVisitor<Path> {
         return FileVisitResult.CONTINUE;
     }
 
+    /**
+     * After a job has finished by the worker, worker will call this method to
+     * acknowledge that the job has done When the total number of finished job
+     * equal to total number job that has been submitted, the system will
+     * terminate and give a statistical result in a text file
+     *
+     * @param date
+     * @param from
+     * @param to
+     * @param subject
+     * @param body
+     * @param allFieldMap
+     * @param jobDone
+     * @throws InterruptedException
+     */
     public void callback(HashMap<String, Integer> date, HashMap<String, Integer> from, HashMap<String, Integer> to, HashMap<String, Integer> subject, HashMap<String, Integer> body, HashMap<String, Integer> allFieldMap, int jobDone) throws InterruptedException {
-
+        /**
+         * Print each 1000 executed job, and run the garbage collector for memory efficiency
+         */
         if (jobDone % 1000 == 0) {
             System.out.println("<==> job done " + jobDone + " from: " + i + " in : " + ((System.nanoTime() - startTime) / 1000000000.0) + " secs");
             rt.gc();
             rt.gc();
         }
-
+        
+        /**
+         * Terminate job while all job has finished
+         */
         if (jobDone >= i) {
             es.shutdown();
             es.awaitTermination((long) 100, TimeUnit.MILLISECONDS);
-
+            
+            
+            /**
+             * Calculate all document statistics and print to file
+             */ 
             Tokenizer.N_messagge = i;
             try {
                 LinkedHashMap dateList = BigConcurentHashMap.calculateTermWight(BigConcurentHashMap.dateConcurentMap, Tokenizer.N_messagge);
@@ -94,18 +143,5 @@ public class FileWalker extends SimpleFileVisitor<Path> {
             System.exit(0);
         }
 
-    }
-
-    public void writeToFile(String fileName, String text) {
-        try {
-            // Create file 
-            FileWriter fstream = new FileWriter(fileName);
-            BufferedWriter out = new BufferedWriter(fstream);
-            out.write(text);
-            //Close the output stream
-            out.close();
-        } catch (Exception e) {//Catch exception if any
-            System.err.println("Error: " + e.getMessage());
-        }
     }
 }

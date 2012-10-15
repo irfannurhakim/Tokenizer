@@ -22,21 +22,23 @@ public class Tokenizer {
     public static String codeName = "irfan_elisafina_pandapotan";
 
     /**
+     * author irfannurhakim
      * @param args the command line arguments
+     *  
      */
     @SuppressWarnings("empty-statement")
     public static void main(String[] args) throws IOException {
         
-        if(args.length != 2){
-            System.out.println("Usage: Tokenizer.jar document_location top_t_token");
-            System.exit(0);
-        }
+        //if(args.length != 2){
+          //  System.out.println("Usage: Tokenizer.jar document_location top_t_token");
+           // System.exit(0);
+        //}
         
-        String root = args[0];
-        top_k_token = Integer.valueOf(args[1]);
+        //String root = args[0];
+        top_k_token = 40;
         
-        //String root = "/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir";
-        //String root = "/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir/allen-p";
+        String root = "/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir/beck-s";
+        //String root = "/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir/allen-p/_sent_mail/10.";
         //String root = "/Users/hadipratama/Documents/Kuliah/Search_Engine_Tech/enron_mail_20110402/maildir/allen-p/straw/7.";
 
         FileVisitor<Path> fileVisitor = new FileWalker();

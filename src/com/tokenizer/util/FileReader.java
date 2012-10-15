@@ -39,6 +39,17 @@ public class FileReader implements Callable {
         return fileWalker;
     }
 
+    /**
+     * This is callable method, so while the FileReader object instantiated this
+     * method will performed. Generally, this method slice the structure of each
+     * email document to five parts: Date, From, To, Subject and Body. After
+     * document has success sliced, then send result to HashMap and invoke
+     * callback to acknowledge the main thread that job was done.
+     *
+     * @return Boolean
+     * @throws IOException
+     * @throws InterruptedException
+     */
     @Override
     public Boolean call() throws IOException, InterruptedException {
 
@@ -48,16 +59,15 @@ public class FileReader implements Callable {
         /*
          * raw -> array 0 head, array 1 tail
          */
-        String[] raw = line.split("date: ", 2);
+        
+        String[] raw = line.split("mime-version: ", 2);
+        
+        String[] rawh = raw[0].split("date: ", 2);
 
-        String[] date = raw[1].split("from: ", 2);
+        String[] date = rawh[1].split("from: ", 2);
         HashMap<String, Integer> dateMap = dateTokenizer.getListDate(date[0]);
-
-        synchronized (BigConcurentHashMap.dateConcurentMap) {
-            BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.dateConcurentMap, dateMap);
-        }
-
-        //System.out.println(dateMap);
+        BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.dateConcurentMap, dateMap);
+        System.out.println("date=" + date[0]);
 
         if (date.length == 1) {
             date[1] = "";
@@ -67,79 +77,56 @@ public class FileReader implements Callable {
         if (date[1].contains("to: ")) {
             from = date[1].split("to: ", 2);
         } else {
-            from = date;
+            from = date[1].split("subject: ", 2);
         }
 
         HashMap<String, Integer> fromMap = FromTokenizer.getListFrom(from[0].replaceAll(", ", " "));
-
-        synchronized (BigConcurentHashMap.fromConcurentMap) {
-            BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.fromConcurentMap, fromMap);
-        }
-        //System.out.println(fromMap);
+        BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.fromConcurentMap, fromMap);
+        System.out.println("from=" + from[0]);
 
         if (from.length == 1) {
             from[1] = "";
         }
 
-        String[] to;
-        if (from[1].contains("subject: ")) {
-            to = from[1].split("subject: ", 2);
+        String[] to = new String[2];
+        if (date[1].contains("to: ")) {
+            if (from[1].contains("subject: ")) {
+                to = from[1].split("subject: ", 2);
+            } else {
+                to = from;
+            }
         } else {
-            to = from;
+            to[0] = "";
         }
 
         HashMap<String, Integer> toMap = toTokenizer.getListTo(to[0]);
-
-        synchronized (BigConcurentHashMap.toConcurentMap) {
-            BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.toConcurentMap, toMap);
-        }
-
+        BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.toConcurentMap, toMap);
+        System.out.println("to" + to[0]);
+        
         if (to.length == 1) {
             to[1] = "";
         }
-
-        String[] subject;
-        if (to[1].contains("mime-version: ")) {
-            subject = to[1].split("mime-version: ", 2);
-        } else {
-            subject = to;
+        
+        if(to[1] == null){
+            to[1] = "";
         }
+        
 
-        HashMap<String, Integer> subjectMap = subject_bodyTokenizer.getListTerm(subject[0]);
-
-        synchronized (BigConcurentHashMap.subjectConcurentMap) {
-            BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.subjectConcurentMap, subjectMap);
-        }
-
-        HashMap<String, Integer> bodyMap = new HashMap<String, Integer>();
-
-
-        if (subject.length == 1) {
-            subject[1] = "";
-        }
-
-        String[] body;
-        if (subject[1].contains(".pst") || subject[1].contains(".nsf")) {
-            body = subject[1].split("(\\.pst)|(\\.nsf)", 2);
-        } else {
-            body = subject;
-        }
-
+        HashMap<String, Integer> subjectMap = subject_bodyTokenizer.getListTerm(to[1]);
+        BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.subjectConcurentMap, subjectMap);
+        System.out.println("subjet" + to[1]);
+        
+        String[] body = raw[1].split("(\\.pst)|(\\.nsf)", 2);
         if (body.length == 1) {
             body[1] = "";
         }
 
-        bodyMap = subject_bodyTokenizer.getListTerm(body[1]);
-
-        synchronized (BigConcurentHashMap.bodyConcurentMap) {
-            BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.bodyConcurentMap, bodyMap);
-        }
-
-        HashMap<String, Integer> allFieldMap = AllFieldTokenizer.allFieldTermList(dateMap, toMap, fromMap, subjectMap, bodyMap);
-
-        synchronized (BigConcurentHashMap.allConcurentMap) {
-            BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.allConcurentMap, allFieldMap);
-        }
+        HashMap<String, Integer> bodyMap = subject_bodyTokenizer.getListTerm(body[1]);
+        BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.bodyConcurentMap, bodyMap);
+        System.out.println("body" + body[1]);
+        
+        HashMap<String, Integer> allFieldMap = AllFieldTokenizer.allFieldTermList(dateMap, toMap, fromMap, subjectMap, bodyMap);        
+        BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.allConcurentMap, allFieldMap);
         //System.out.println(allFieldMap);
 
 

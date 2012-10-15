@@ -16,6 +16,12 @@ public class FromTokenizer {
             "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
+    /**
+     * author: Elisafina
+     * untuk menampung string from dari suatu file ke dalam bentuk hashmap
+     * @param from
+     * @return hashmap dari field from
+     */
     public static HashMap<String, Integer> getListFrom(String from) {
         HashMap<String, Integer> termList = new HashMap<String, Integer>();
         
@@ -23,7 +29,7 @@ public class FromTokenizer {
         
         for (int i = 0; i < terms.length; i++) {
             String key = terms[i];
-            if (key.matches(EMAIL_PATTERN) && !key.matches("")) {
+            if (key.matches(EMAIL_PATTERN)) {
                 Integer freq = (Integer) termList.get(key);
                 if (freq == null) {
                     freq = new Integer(1);
