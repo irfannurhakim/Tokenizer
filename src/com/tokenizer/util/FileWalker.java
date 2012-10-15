@@ -140,6 +140,7 @@ public class FileWalker extends SimpleFileVisitor<Path> {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            System.out.println("Total execution time : " + ((System.nanoTime() - startTime) / 1000000000.0) + " secs");
             System.exit(0);
         }
 
