@@ -119,7 +119,7 @@ public class BigConcurentHashMap {
      */
     public static void printStatistic (LinkedHashMap termList, String field, long totalMessage)
     {
-        System.out.println(field);
+        //System.out.println(field);
             int i=1;
             String temp="";
             Set set = termList.entrySet();
@@ -151,7 +151,7 @@ public class BigConcurentHashMap {
     public static void writeToFile(String fileName, String text) {
         try {
             // Create file 
-            System.out.println(fileName);
+            //System.out.println(fileName);
             FileWriter fstream = new FileWriter(fileName);
             BufferedWriter out = new BufferedWriter(fstream);
             out.write(text);

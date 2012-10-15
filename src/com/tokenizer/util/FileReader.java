@@ -67,7 +67,7 @@ public class FileReader implements Callable {
         String[] date = rawh[1].split("from: ", 2);
         HashMap<String, Integer> dateMap = dateTokenizer.getListDate(date[0]);
         BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.dateConcurentMap, dateMap);
-        System.out.println("date=" + date[0]);
+        //System.out.println("date=" + date[0]);
 
         if (date.length == 1) {
             date[1] = "";
@@ -82,7 +82,7 @@ public class FileReader implements Callable {
 
         HashMap<String, Integer> fromMap = FromTokenizer.getListFrom(from[0].replaceAll(", ", " "));
         BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.fromConcurentMap, fromMap);
-        System.out.println("from=" + from[0]);
+        //System.out.println("from=" + from[0]);
 
         if (from.length == 1) {
             from[1] = "";
@@ -101,12 +101,17 @@ public class FileReader implements Callable {
 
         HashMap<String, Integer> toMap = toTokenizer.getListTo(to[0]);
         BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.toConcurentMap, toMap);
-        System.out.println("to" + to[0]);
+        
+        //System.out.println("to" + to[0]);
         
         if (to.length == 1) {
             to[1] = "";
         }
         
+        if(to[1].contains("cc: "))
+        {
+            to[1]= to[1].split("cc: ",2)[0];
+        }
         if(to[1] == null){
             to[1] = "";
         }
@@ -114,7 +119,8 @@ public class FileReader implements Callable {
 
         HashMap<String, Integer> subjectMap = subject_bodyTokenizer.getListTerm(to[1]);
         BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.subjectConcurentMap, subjectMap);
-        System.out.println("subjet" + to[1]);
+        //System.out.println("subjet" + to[1]);
+        
         
         String[] body = raw[1].split("(\\.pst)|(\\.nsf)", 2);
         if (body.length == 1) {
@@ -123,7 +129,7 @@ public class FileReader implements Callable {
 
         HashMap<String, Integer> bodyMap = subject_bodyTokenizer.getListTerm(body[1]);
         BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.bodyConcurentMap, bodyMap);
-        System.out.println("body" + body[1]);
+        //System.out.println("body" + body[1]);
         
         HashMap<String, Integer> allFieldMap = AllFieldTokenizer.allFieldTermList(dateMap, toMap, fromMap, subjectMap, bodyMap);        
         BigConcurentHashMap.mergeBigHashMap(BigConcurentHashMap.allConcurentMap, allFieldMap);

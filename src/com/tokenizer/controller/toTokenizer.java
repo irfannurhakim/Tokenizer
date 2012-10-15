@@ -26,10 +26,10 @@ public class toTokenizer {
      */
     public static HashMap<String, Integer> getListTo(String to) {
         HashMap<String, Integer> termList = new HashMap<String, Integer>();
-        String[] terms = to.split(",|(\\s)+|<|> ");
+        String[] terms = to.split(",|(\\s)+|>|< ");
         for (int i = 0; i < terms.length; i++) {
             String key = terms[i];
-            if (key.matches(EMAIL_PATTERN)) {
+            if ( !key.matches("")) {
                 Integer freq = (Integer) termList.get(key);
                 if (freq == null) {
                     freq = new Integer(1);
